@@ -137,6 +137,11 @@ public class Unit : IStats
     }
     public bool Combat(Unit u)
     {
+        if(u == null)
+        {
+            return false;
+        }
+
         if (u.HP > 0)
         {
             float avg = u.Armor * 0.25f;

@@ -25,25 +25,12 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
     //checks to see who attacks first.
     public List<Unit> Speed(List<Unit> List)
     {
-        Player listp = new Player();
-        Enemy liste = new Enemy();
-        List<Unit> sortedlist = new List<Unit>();
-        sortedlist = List.OrderByDescending(u => u.Spd).ToList<Unit>();
+        List<Unit> sortedList = new List<Unit>();
 
-        foreach (Unit i in sortedlist)
-        {
-            if(i.Type == "Player")
-            {
-                listp.Party.Add((Player)i);
-            }
-            if(i.Type == "Enemy")
-            {
-                liste.EP.Add((Enemy)i);
-            }
-        }
-        Console.WriteLine(sortedlist.ElementAt(0).Name + "I'll draw first\n");
+        sortedList = List.OrderByDescending(u => u.Spd).ToList<Unit>();
+        Console.WriteLine(sortedList.ElementAt(0).Name + "I'll draw first");
 
-        return sortedlist;
+        return sortedList;
     }
     //void Function for Fight
     public void Fight(List<Unit> uList, FSMac<i_STATES> FSM)
@@ -59,7 +46,7 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
         {
             if(uList.ElementAt(i).Type == "Player")
             {
-                Console.Write("Press 1 to Attack");
+                Console.Write("Press  to Attack");
                 input = (char)Console.Read();
 
                 if(input == '1')
@@ -90,7 +77,7 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
         }
     }
     //Checks to see if the player is victorious in battle.
-    public bool Victorious(bool b, List<Player> listp, List<Enemy> liste)
+    public bool Victorious(List<Player> listp, List<Enemy> liste)
     {
         int count = 0;
         int counts = 0;
@@ -101,7 +88,8 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
                 count++;
                 if(listp.Count == count)
                 {
-                    b = true;
+                    Console.WriteLine("You have been Defeated!\n");
+                    return true;
                 }
             }
         }
@@ -113,11 +101,12 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
                 counts++;
                 if (liste.Count == count)
                 {
-                    b = true;
+                    Console.WriteLine("You have been defeated");
+                    return true;
                 }
             }
         }
-        return b;
+        return false;
     }
 }
 

@@ -26,7 +26,7 @@ public interface IStats
 public interface IControl<T, U,V, W>
 {
     List<Unit> Speed(T u);
-    bool Victorious(bool b, U p, V e);
+    bool Victorious(U p, V e);
     void Fight(T u, W f);
     void Objectstats(T u);
    

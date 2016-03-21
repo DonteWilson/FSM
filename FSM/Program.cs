@@ -32,6 +32,7 @@ namespace FSMachine
             FSM.AddT(i_STATES.Target, i_STATES.Dead);
 
             ControlPanel Control = ControlPanel.instance;
+            //Represents group the members are in
             List<Unit> League = new List<Unit>();
 
             //Graps a list of units 
@@ -39,13 +40,13 @@ namespace FSMachine
             Enemy liste = new Enemy();
 
             //Player
-            Player Jittery = new Player();
+            Player Jittery = new Player("Jittery", 100, 5,"Player");
             
             //Enemies
-            Enemy Atoli = new Enemy();
-            Enemy Violet = new Enemy();
-            Enemy Savor = new Enemy();
-            Enemy Ryyul = new Enemy();
+            Enemy Atoli = new Enemy("Atoli", 100, 2,"Enemy");
+            Enemy Violet = new Enemy("Violet",100, 2,"Enemy");
+            Enemy Savor = new Enemy("Savor",100, 3, "Enemy");
+            Enemy Ryyul = new Enemy("Ryyul", 100, 4, "Enemy");
 
             Unit u = new Unit();
 
@@ -62,6 +63,7 @@ namespace FSMachine
             {
                 switch (FSM.state)
                 {
+                    //Unit starts in its initial state.
                     case i_STATES.Init:
                         FSM.TState(i_STATES.Idle);
                         break;
@@ -74,7 +76,7 @@ namespace FSMachine
                     case i_STATES.Target:
                         Control.Fight(League, FSM);
                         break;
-                    //When target or player health = 0. The game is over.
+                    //When target or player health = 0. sets the game running to false.
                     case i_STATES.Dead:
                         Control.Objectstats(u.member);
                         running = false;
