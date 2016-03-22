@@ -13,6 +13,7 @@ namespace FSM_Test
 {
     public partial class Form2 : Form
     {
+        IO _Save = new IO();
         int index;
         int count;
 
@@ -27,10 +28,22 @@ namespace FSM_Test
 
             InitializeComponent();
 
+            
+
         }
         private void Start_Click(object sender, EventArgs e)
         {
-            
+            refer.Control.FSM.TState(i_STATES.FIGHT);
+
+            if (refer.Control.FSM.state == i_STATES.FIGHT) ;
+            {
+                refer.u.member = refer.Control.Speed(refer.BattleGroup);
+
+                for(int i = 0; i < refer.u.member.Count; i++)
+                {
+                    
+                }
+            }
         }
         private void LDash_Click(object sender, EventArgs e)
         {

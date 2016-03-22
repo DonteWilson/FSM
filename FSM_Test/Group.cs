@@ -8,8 +8,6 @@ namespace FSM_Test
     [XmlRoot("Party")]
     public class Party
     {
-        
-
         public Party()
         {
             _units = new List<Unit>();
