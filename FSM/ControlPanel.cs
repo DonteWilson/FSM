@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy>, FSMac<i_STATES>>
+public sealed class ControlPanel : IControl<List<Unit>, FSMac<i_STATES>>
 {
+    public FSMac<i_STATES> FSM = new FSMac<i_STATES>();
+
     ControlPanel() { }
 
     static private ControlPanel _instance;
@@ -35,33 +37,33 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
     //void Function for Fight
     public void Fight(List<Unit> uList, FSMac<i_STATES> FSM)
     {
-        char input;
-        //Player list
-        Player listp = new Player();
-        //Enemy list
-        Enemy liste = new Enemy();
-        Unit a = new Unit();
+        //char input;
+        ////Player list
+        //Player listp = new Player();
+        ////Enemy list
+        //Enemy liste = new Enemy();
+        //Unit a = new Unit();
 
-        for(int i = 0; i < uList.Count; i++)
-        {
-            if(uList.ElementAt(i).Type == "Player")
-            {
-                Console.Write("Press  to Attack");
-                input = (char)Console.Read();
+        //for(int i = 0; i < uList.Count; i++)
+        //{
+        //    if(uList.ElementAt(i).Type == "Player")
+        //    {
+        //        Console.Write("Press  to Attack");
+        //        input = (char)Console.Read();
 
-                if(input == '1')
-                {
-                    if(uList.ElementAt(i).Combat(a.Indicator(liste.EP)) == true)
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (uList.ElementAt(i).Type == "Enemy")
-            {
+        //        if(input == '1')
+        //        {
+        //            if(uList.ElementAt(i).Combat(a.Indicator(liste.EP)) == true)
+        //            {
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    else if (uList.ElementAt(i).Type == "Enemy")
+        //    {
 
-            }
-        }
+        //    }
+        //}
     }
     //Displays the stats of a Player
     public void Objectstats(List<Unit> ulist)
@@ -77,11 +79,11 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
         }
     }
     //Checks to see if the player is victorious in battle.
-    public bool Victorious(List<Player> listp, List<Enemy> liste)
+    public bool Victorious(List<Unit> listp, List<Unit> liste)
     {
         int count = 0;
         int counts = 0;
-        foreach(Player p in listp)
+        foreach(Unit p in listp)
         {
             if(p.Life == false)
             {
@@ -94,14 +96,14 @@ public sealed class ControlPanel : IControl<List<Unit>, List<Player>, List<Enemy
             }
         }
         //checks through each enemy in the list and checks to see if they are still alive.
-        foreach(Enemy e in liste)
+        foreach(Unit e in liste)
         {
             if(e.Life == false)
             {
                 counts++;
                 if (liste.Count == count)
                 {
-                    Console.WriteLine("You have been defeated");
+                    Console.WriteLine("You are Victorious");
                     return true;
                 }
             }

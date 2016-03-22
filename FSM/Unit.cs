@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Unit : IStats
+[Serializable]
+public class Unit : IStats, IAbilities<Unit> 
 {
     private int m_uLvl;
     private int m_uArmor;
@@ -16,6 +17,21 @@ public class Unit : IStats
     private int m_uHP;
     private int m_uSpd;
     public string m_uName;
+
+    public Unit()
+    {
+
+    }
+    public Unit(string name, int HP, int Armor, int Spd, int XP, string type)
+    {
+        m_uName = name;
+        m_uHP = HP;
+        m_uArmor = Armor;
+        m_uSpd = Spd;
+        m_uXP = XP;
+        m_uLife = true;
+        m_uLvl = 1;
+    }
 
 
     public string Name
@@ -74,11 +90,6 @@ public class Unit : IStats
         {
             m_uTarget = value;
         }
-    }
-
-    public Unit()
-    {
-
     }
     public int HP
     {
@@ -168,7 +179,7 @@ public class Unit : IStats
         }
     }
     //Indicate she enemies hp and checks to see if dead or alive.
-    public Unit Indicator(List<Enemy> EP)
+    public Unit Indicator(List<Unit> EP)
     {
         string Input;
 

@@ -4,8 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+public enum i_STATES
+{
+    INIT,
+    START,
+    FIGHT,
+    PTURN,
+    ETURN,
+    EXIT
+}
+
 namespace FSM_Test
 {
+
     static class Program
     {
         /// <summary>
