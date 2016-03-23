@@ -65,7 +65,7 @@ namespace FSM_Test
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            textBox3.Multiline = true;
+            State.Multiline = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -83,6 +83,12 @@ namespace FSM_Test
 
         }
 
-        
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            count = refer.u.member.Count - 1;
+            index = 0;
+
+            State.Text = refer.Control.FSM.state.ToString();
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -126,9 +125,9 @@ namespace FSM_Test
 
             Random r = new Random();
 
-            int p1 = r.Next(8, p.Count);
-            int p2 = r.Next(8, p.Count);
-            int p3 = r.Next(8, p.Count);
+            int p1 = r.Next(0, p.Count - 1);
+            int p2 = r.Next(0, p.Count - 1);
+            int p3 = r.Next(0, p.Count - 1);
 
             if (p1 != p2 && p1 != p3)
             {
@@ -138,6 +137,7 @@ namespace FSM_Test
                 P1dmg.Text = p[p1].HP.ToString();
                 P1armor.Text = p[p1].Armor.ToString();
                 P1lvl.Text = p[p1].Lvl.ToString();
+                BattleGroup.Add(p[p1]);
                
                
                     
@@ -150,6 +150,7 @@ namespace FSM_Test
                 P2dmg.Text = p[p2].Dmg.ToString();
                 P2armor.Text = p[p2].Armor.ToString();
                 P2lvl.Text = p[p2].Lvl.ToString();
+                BattleGroup.Add(p[p2]);
             }
             if(p3 != p2 && p3 != p1)
             {
@@ -159,23 +160,24 @@ namespace FSM_Test
                 P3dmg.Text = p[p3].Dmg.ToString();
                 P3armor.Text = p[p3].Armor.ToString();
                 P3lvl.Text = p[p3].Lvl.ToString();
+                BattleGroup.Add(p[p3]);
                 
             }
             characterpreview(BattleGroup);
 
-            Random a = new Random();
+            //Random a = new Random();
 
-            int e1 = a.Next(8, e.Count);
-            int e2 = a.Next(8, e.Count);
-            int e3 = a.Next(8, e.Count);
+            //int e1 = a.Next(0, e.Count);
+            //int e2 = a.Next(0, e.Count);
+            //int e3 = a.Next(0, e.Count);
 
-            e1name = e[e1].Name;
-            e2name = e[e2].Name;
-            e3name = e[e3].Name;
+            //e1name = e[e1].Name;
+            //e2name = e[e2].Name;
+            //e3name = e[e3].Name;
 
-            BattleGroup.Add(e[e1]);
-            BattleGroup.Add(e[e2]);
-            BattleGroup.Add(e[e3]);
+            //BattleGroup.Add(e[e1]);
+            //BattleGroup.Add(e[e2]);
+            //BattleGroup.Add(e[e3]);
 
                 
         }
