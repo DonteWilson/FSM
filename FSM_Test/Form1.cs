@@ -67,8 +67,7 @@ namespace FSM_Test
             Unit Rory = new Unit("Rory", 100, 8,10, 5, 0, "Player");
             Unit Yato = new Unit("Yato", 100, 10,10, 5, 0, "Player");
             Unit Meteos = new Unit("Meteos", 100, 9,10, 4, 0, "Player");
-            Unit Ed = new Unit("Ed", 100, 9, 10, 5, 0, "Player");
-            Unit Ria = new Unit("Ria", 100, 8,10, 5, 0, "Player");
+        
 
             Unit Savor = new Unit("Savor",100,5, 5,4,0,"Enemy");
             Unit Friv = new Unit("Friv",99,6,10,4,0,"Enemy");
@@ -76,8 +75,7 @@ namespace FSM_Test
             Unit Violet = new Unit("Violet",98,5,5,5,0,"Enemy");
             Unit Muur = new Unit("Savor", 100, 5,6, 4, 0, "Enemy");
             Unit Loki = new Unit("Friv", 99, 6,4, 4, 0, "Enemy");
-            Unit Lara = new Unit("Atoli", 101, 7,6, 4, 0, "Enemy");
-            Unit Pearl = new Unit("Violet", 98, 5,8, 5, 0, "Enemy");
+           
 
             pObjects.Add(Jittery);
             pObjects.Add(Ryyul);
@@ -85,8 +83,7 @@ namespace FSM_Test
             pObjects.Add(Rory);
             pObjects.Add(Yato);
             pObjects.Add(Meteos);
-            pObjects.Add(Ed);
-            pObjects.Add(Ria);
+           
 
             pObjects.Add(Savor);
             pObjects.Add(Friv);
@@ -94,8 +91,7 @@ namespace FSM_Test
             pObjects.Add(Violet);
             pObjects.Add(Muur);
             pObjects.Add(Loki);
-            pObjects.Add(Lara);
-            pObjects.Add(Pearl);
+          
 
             return pObjects;
             
@@ -163,7 +159,7 @@ namespace FSM_Test
                 BattleGroup.Add(p[p3]);
                 
             }
-            characterpreview(BattleGroup);
+            CharIcon(BattleGroup);
 
             //Random a = new Random();
 
@@ -238,11 +234,14 @@ namespace FSM_Test
             //}
         }
        
-        private void characterpreview(List<Unit> units)
+        private void CharIcon(List<Unit> units)
         {
 
         }
 
-       
+        private void P2hp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

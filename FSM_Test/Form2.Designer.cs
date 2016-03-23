@@ -44,7 +44,7 @@
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(324, 237);
+            this.Start.Location = new System.Drawing.Point(446, 415);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(75, 23);
             this.Start.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(207, 233);
+            this.button2.Location = new System.Drawing.Point(255, 336);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 23);
             this.button2.TabIndex = 1;
@@ -64,8 +64,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(185, 51);
+            this.pictureBox1.Location = new System.Drawing.Point(234, 153);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(162, 177);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -74,7 +73,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(384, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(564, 156);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(160, 177);
             this.pictureBox2.TabIndex = 3;
@@ -82,14 +81,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(421, 236);
+            this.textBox1.Location = new System.Drawing.Point(598, 339);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(91, 20);
             this.textBox1.TabIndex = 4;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(207, 264);
+            this.button3.Location = new System.Drawing.Point(255, 365);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(111, 23);
             this.button3.TabIndex = 5;
@@ -99,7 +98,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(207, 293);
+            this.button4.Location = new System.Drawing.Point(255, 394);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(111, 23);
             this.button4.TabIndex = 6;
@@ -109,15 +108,16 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(30, 51);
+            this.textBox2.Location = new System.Drawing.Point(38, 140);
+            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 20);
+            this.textBox2.Size = new System.Drawing.Size(117, 192);
             this.textBox2.TabIndex = 7;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // State
             // 
-            this.State.Location = new System.Drawing.Point(573, 51);
+            this.State.Location = new System.Drawing.Point(822, 153);
             this.State.Multiline = true;
             this.State.Name = "State";
             this.State.Size = new System.Drawing.Size(108, 180);
@@ -129,7 +129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(717, 336);
+            this.ClientSize = new System.Drawing.Size(995, 528);
             this.Controls.Add(this.State);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button4);
