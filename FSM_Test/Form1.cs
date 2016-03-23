@@ -33,6 +33,7 @@ namespace FSM_Test
         {
             InitializeComponent();
         }
+        //Generates Player Party
         private void CreateParty_Click(object sender, EventArgs e)
         {
             SaveButton.Enabled = true;
@@ -48,7 +49,7 @@ namespace FSM_Test
                 {
                     players.Add(i);
                 }
-                if(i.Type =="Enemy")
+                if(i.Type == "Enemy")
                 {
                     enemies.Add(i);
                 }
@@ -57,6 +58,7 @@ namespace FSM_Test
             SetParties(players, enemies);
 
         }
+        //Creates player objects
         private List<Unit> PlayerObjects()
         {
             List<Unit> pObjects = new List<Unit>();
@@ -71,12 +73,12 @@ namespace FSM_Test
 
             Unit Savor = new Unit("Savor",100,5, 5,4,0,"Enemy");
             Unit Friv = new Unit("Friv",99,6,10,4,0,"Enemy");
-            Unit Atoli = new Unit("Atoli",101,7,6,4,0,"Enemy");
+            Unit Atoli = new Unit("Atoli",100,7,6,4,0,"Enemy");
             Unit Violet = new Unit("Violet",98,5,5,5,0,"Enemy");
             Unit Muur = new Unit("Savor", 100, 5,6, 4, 0, "Enemy");
             Unit Loki = new Unit("Friv", 99, 6,4, 4, 0, "Enemy");
            
-
+            //Adds Player Unit Objects
             pObjects.Add(Jittery);
             pObjects.Add(Ryyul);
             pObjects.Add(Sneaky);
@@ -84,7 +86,7 @@ namespace FSM_Test
             pObjects.Add(Yato);
             pObjects.Add(Meteos);
            
-
+            //Adds Enemy Unit Objects
             pObjects.Add(Savor);
             pObjects.Add(Friv);
             pObjects.Add(Atoli);
@@ -92,10 +94,11 @@ namespace FSM_Test
             pObjects.Add(Muur);
             pObjects.Add(Loki);
           
-
+            //return pObjects value
             return pObjects;
             
         }
+        //Checks to see if the user wants to use this party
         private void ConfirmParty_Check(object sender, EventArgs e)
         {
             if(checkBox1.Checked == true )
@@ -114,68 +117,67 @@ namespace FSM_Test
                 
             }
         }
-        private void SetParties(List<Unit> p, List<Unit> e)
+
+        //Looks through players and generates a random party of 3.
+        private void SetParties(List<Unit> Plyr, List<Unit> Enmy)
         {
             List<Unit> empty = new List<Unit>();
             BattleGroup.RemoveRange(0, BattleGroup.Count);
 
             Random r = new Random();
 
-            int p1 = r.Next(0, p.Count - 1);
-            int p2 = r.Next(0, p.Count - 1);
-            int p3 = r.Next(0, p.Count - 1);
+            int p1 = r.Next(0, Plyr.Count - 1);
+            int p2 = r.Next(0, Plyr.Count - 1);
+            int p3 = r.Next(0, Plyr.Count - 1);
 
             if (p1 != p2 && p1 != p3)
             {
-                P1NBox.Text = p[p1].Name;
-                p1name = p[p1].Name;
-                P1hp.Text = p[p1].HP.ToString();
-                P1dmg.Text = p[p1].HP.ToString();
-                P1armor.Text = p[p1].Armor.ToString();
-                P1lvl.Text = p[p1].Lvl.ToString();
-                BattleGroup.Add(p[p1]);
-               
-               
-                    
+                P1NBox.Text = Plyr[p1].Name;
+                p1name = Plyr[p1].Name;
+                P1hp.Text = Plyr[p1].HP.ToString();
+                P1dmg.Text = Plyr[p1].HP.ToString();
+                P1armor.Text = Plyr[p1].Armor.ToString();
+                P1lvl.Text = Plyr[p1].Lvl.ToString();
+                BattleGroup.Add(Plyr[p1]);
             }
             if (p2 != p3 && p2 != p1)
             {
-                P2NBox.Text = p[p2].Name;
-                p2name = p[p2].Name;
-                P2hp.Text = p[p2].HP.ToString();
-                P2dmg.Text = p[p2].Dmg.ToString();
-                P2armor.Text = p[p2].Armor.ToString();
-                P2lvl.Text = p[p2].Lvl.ToString();
-                BattleGroup.Add(p[p2]);
+                P2NBox.Text = Plyr[p2].Name;
+                p2name = Plyr[p2].Name;
+                P2hp.Text = Plyr[p2].HP.ToString();
+                P2dmg.Text = Plyr[p2].Dmg.ToString();
+                P2armor.Text = Plyr[p2].Armor.ToString();
+                P2lvl.Text = Plyr[p2].Lvl.ToString();
+                BattleGroup.Add(Plyr[p2]);
             }
-            if(p3 != p2 && p3 != p1)
+            if (p3 != p2 && p3 != p1)
             {
-                P3NBox.Text = p[p3].Name;
-                p3name = p[p3].Name;
-                P3hp.Text = p[p3].HP.ToString();
-                P3dmg.Text = p[p3].Dmg.ToString();
-                P3armor.Text = p[p3].Armor.ToString();
-                P3lvl.Text = p[p3].Lvl.ToString();
-                BattleGroup.Add(p[p3]);
-                
+                P3NBox.Text = Plyr[p3].Name;
+                p3name = Plyr[p3].Name;
+                P3hp.Text = Plyr[p3].HP.ToString();
+                P3dmg.Text = Plyr[p3].Dmg.ToString();
+                P3armor.Text = Plyr[p3].Armor.ToString();
+                P3lvl.Text = Plyr[p3].Lvl.ToString();
+                BattleGroup.Add(Plyr[p3]);
+
             }
             CharIcon(BattleGroup);
 
-            //Random a = new Random();
+            Random a = new Random();
 
-            //int e1 = a.Next(0, e.Count);
-            //int e2 = a.Next(0, e.Count);
-            //int e3 = a.Next(0, e.Count);
+            int e1 = a.Next(0, Enmy.Count);
+            int e2 = a.Next(0, Enmy.Count);
+            int e3 = a.Next(0, Enmy.Count);
 
-            //e1name = e[e1].Name;
-            //e2name = e[e2].Name;
-            //e3name = e[e3].Name;
+            e1name = Enmy[e1].Name;
+            e2name = Enmy[e2].Name;
+            e3name = Enmy[e3].Name;
 
-            //BattleGroup.Add(e[e1]);
-            //BattleGroup.Add(e[e2]);
-            //BattleGroup.Add(e[e3]);
+            BattleGroup.Add(Enmy[e1]);
+            BattleGroup.Add(Enmy[e2]);
+            BattleGroup.Add(Enmy[e3]);
 
-                
+
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {
@@ -202,17 +204,17 @@ namespace FSM_Test
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Party party = new Party();
+            //Party party = new Party();
 
-            foreach (Unit i in BattleGroup)
-            {
-                if (i.Type == "Player")
-                {
-                    party.units.Add(i);
-                }
-            }
+            //foreach (Unit i in BattleGroup)
+            //{
+            //    if (i.Type == "Player")
+            //    {
+            //        party.units.Add(i);
+            //    }
+            //}
 
-            _Save.Serialize("Party", party);
+            //_Save.Serialize("Party", party);
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
@@ -236,12 +238,97 @@ namespace FSM_Test
        
         private void CharIcon(List<Unit> units)
         {
-
+            for(int i = 0; i < units.Count; i++)
+            {
+                if (units[i].Name == P1NBox.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Jittery":
+                            pictureBox1.Image = Properties.Resources.Jittery;
+                            break;
+                        case "Ryyul":
+                            pictureBox1.Image = Properties.Resources.Ryyul;
+                            break;
+                        case "Rory":
+                            pictureBox1.Image = Properties.Resources.Rory;
+                            break;
+                        case "Yato":
+                            pictureBox1.Image = Properties.Resources.Yato;
+                            break;
+                        case "Meteos":
+                            pictureBox1.Image = Properties.Resources.Meteos;
+                            break;
+                        case "Sneaky":
+                            pictureBox1.Image = Properties.Resources.Sneaky;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (units[i].Name == P2NBox.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Jittery":
+                            pictureBox2.Image = Properties.Resources.Jittery;
+                            break;
+                        case "Ryyul":
+                            pictureBox2.Image = Properties.Resources.Ryyul;
+                            break;
+                        case "Rory":
+                            pictureBox2.Image = Properties.Resources.Rory;
+                            break;
+                        case "Yato":
+                            pictureBox2.Image = Properties.Resources.Yato;
+                            break;
+                        case "Meteos":
+                            pictureBox2.Image = Properties.Resources.Meteos;
+                            break;
+                        case "Sneaky":
+                            pictureBox2.Image = Properties.Resources.Sneaky;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (units[i].Name == P3NBox.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Jittery":
+                            pictureBox3.Image = Properties.Resources.Jittery;
+                            break;
+                        case "Ryyul":
+                            pictureBox3.Image = Properties.Resources.Ryyul;
+                            break;
+                        case "Rory":
+                            pictureBox3.Image = Properties.Resources.Rory;
+                            break;
+                        case "Yato":
+                            pictureBox3.Image = Properties.Resources.Yato;
+                            break;
+                        case "Meteos":
+                            pictureBox3.Image = Properties.Resources.Meteos;
+                            break;
+                        case "Sneaky":
+                            pictureBox3.Image = Properties.Resources.Sneaky;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
-        private void P2hp_TextChanged(object sender, EventArgs e)
-        {
+        //private void P2hp_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
+
+        //private void P1lvl_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
