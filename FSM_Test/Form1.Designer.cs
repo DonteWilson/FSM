@@ -230,8 +230,10 @@
             this.P1NBox.Location = new System.Drawing.Point(57, 3);
             this.P1NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1NBox.Name = "P1NBox";
+            this.P1NBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.P1NBox.Size = new System.Drawing.Size(29, 20);
             this.P1NBox.TabIndex = 21;
+            this.P1NBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // P1hp
             // 
