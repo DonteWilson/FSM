@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+[Serializable]
 public class FSMac<T>
 {
     public class Transition
@@ -21,9 +22,9 @@ public class FSMac<T>
     }
     private T _currentState;
 
-    private List<T> _states;
+    [NonSerialized]private List<T> _states;
     //Dictionary which has multiple transitional values
-    private Dictionary<T, List<Transition>> Transitions;
+    [NonSerialized]private Dictionary<T, List<Transition>> Transitions;
 
     public T state
     {

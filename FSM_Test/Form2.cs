@@ -33,17 +33,40 @@ namespace FSM_Test
         }
         private void Start_Click(object sender, EventArgs e)
         {
-            refer.Control.FSM.TState(i_STATES.FIGHT);
 
-            if (refer.Control.FSM.state == i_STATES.FIGHT) ;
-            {
-                refer.u.member = refer.Control.Speed(refer.BattleGroup);
+            //if (refer.Control.FSM.state == i_STATES.PTURN)
+            //{
+            //    index = refer.currentUnitIndex;
 
-                for(int i = 0; i < refer.u.member.Count; i++)
-                {
-                    
-                }
-            }
+            //    //Battle party sorted by speed to produce attack order 
+            //    refer.u.member = refer.Control.Speed(refer.BattleGroup);
+
+            //    for (int i = 0; i < refer.u.member.Count; i++)
+            //    {
+            //        BattleOrderTextBox.Text += "\n" + refer.u.member[i].Name + "\n";
+            //    }
+
+            //    setCharIcon(refer.u.member);
+
+            //   Start.Enabled = false;
+
+            //    refer.Control.Statsofobjects(refer.u.member);
+
+            //    StatsBox.Text = refer.Control.statsText;
+
+            //    foreach (Unit i in refer.u.member)
+            //    {
+            //        if (i.Type == "Player")
+            //        {
+            //            Party.Add(i);
+
+            //        }
+            //        if (i.Type == "Enemy")
+            //        {
+            //            Eparty.Add(i);
+
+            //        }
+            //    }
         }
         private void LDash_Click(object sender, EventArgs e)
         {

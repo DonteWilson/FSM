@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace FSM_Test
 {
@@ -169,10 +170,6 @@ namespace FSM_Test
             int e2 = a.Next(0, Enmy.Count);
             int e3 = a.Next(0, Enmy.Count);
 
-            e1name = Enmy[e1].Name;
-            e2name = Enmy[e2].Name;
-            e3name = Enmy[e3].Name;
-
             BattleGroup.Add(Enmy[e1]);
             BattleGroup.Add(Enmy[e2]);
             BattleGroup.Add(Enmy[e3]);
@@ -204,36 +201,90 @@ namespace FSM_Test
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //Party party = new Party();
+            Party party = new Party();
 
-            //foreach (Unit i in BattleGroup)
-            //{
-            //    if (i.Type == "Player")
-            //    {
-            //        party.units.Add(i);
-            //    }
-            //}
+            foreach (Unit i in BattleGroup)
+            {
+                if (i.Type == "Player")
+                {
+                    party.units.Add(i);
+                }
+            }
 
-            //_Save.Serialize("Party", party);
+            _Save.Serialize("Party", party);
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            //Party LoadParty;
+            Party loadedunits;
 
-            //OpenFileDialog DialogWindow = new OpenFileDialog();
 
-            //DialogWindow.InitialDirectory = @"..\SavedPArties\";
-            //DialogWindow.Filter = "txt files (*.txt) |*.txt|All files (*.*)|*.*";
-            //DialogWindow.FilterIndex = 2;
-            //DialogWindow.RestoreDirectory = true;
+            OpenFileDialog DialogWindow = new OpenFileDialog();
+            DialogWindow.InitialDirectory = @"..\SavedParties";
+            DialogWindow.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            DialogWindow.FilterIndex = 2;
+            DialogWindow.RestoreDirectory = true;
 
-            //if (DialogWindow.ShowDialog() == DialogResult.OK)
-            //{
-            //    string SelectedFile = DialogWindow.FileName;
-            //    LoadParty = _Save.Deserialize<Party>(SelectedFile);
-                
-                 
-            //}
+            if (DialogWindow.ShowDialog() == DialogResult.OK)
+            {
+
+                string chosenFile = DialogWindow.FileName;
+                loadedunits = _Save.Deserialize<Party>(chosenFile);
+
+                P1NBox.Text = loadedunits.units[0].Name;
+                P1hp.Text = loadedunits.units[0].HP.ToString();
+                P1dmg.Text = loadedunits.units[0].Dmg.ToString();
+                P1Spd.Text = loadedunits.units[0].Spd.ToString();
+                P1armor.Text = loadedunits.units[0].Armor.ToString();
+                P1lvl.Text = loadedunits.units[0].Lvl.ToString();
+
+                P2NBox.Text = loadedunits.units[0].Name;
+                P2hp.Text = loadedunits.units[0].HP.ToString();
+                P2dmg.Text = loadedunits.units[0].Dmg.ToString();
+                P2Spd.Text = loadedunits.units[0].Spd.ToString();
+                P2armor.Text = loadedunits.units[0].Armor.ToString();
+                P2lvl.Text = loadedunits.units[0].Lvl.ToString();
+
+                P3NBox.Text = loadedunits.units[0].Name;
+                P3hp.Text = loadedunits.units[0].HP.ToString();
+                P3dmg.Text = loadedunits.units[0].Dmg.ToString();
+                P3Spd.Text = loadedunits.units[0].Spd.ToString();
+                P3armor.Text = loadedunits.units[0].Armor.ToString();
+                P3lvl.Text = loadedunits.units[0].Lvl.ToString();
+
+                foreach (Unit i in loadedunits.units)
+                {
+                    BattleGroup.Add(i);
+                }
+
+                List<Unit> tempParty = new List<Unit>();
+
+                tempParty = PlayerObjects();
+
+                foreach (Unit i in tempParty)
+                {
+                    if (i.Type == "Enemy")
+                    {
+                        enemies.Add(i);
+                    }
+
+                }
+                Random a = new Random();
+
+                int e1 = a.Next(0, enemies.Count);
+                int e2 = a.Next(0, enemies.Count);
+                int e3 = a.Next(0, enemies.Count);
+
+                e1name = enemies[e1].Name;
+                e2name = enemies[e2].Name;
+                e3name = enemies[e3].Name;
+
+
+                BattleGroup.Add(enemies[e1]);
+                BattleGroup.Add(enemies[e2]);
+                BattleGroup.Add(enemies[e3]);
+
+                CharIcon(loadedunits.units);
+            }
         }
        
         private void CharIcon(List<Unit> units)
@@ -321,14 +372,14 @@ namespace FSM_Test
             }
         }
 
-        //private void P2hp_TextChanged(object sender, EventArgs e)
-        //{
+        private void P2hp_TextChanged(object sender, EventArgs e)
+        {
 
-        //}
+        }
 
-        //private void P1lvl_TextChanged(object sender, EventArgs e)
-        //{
+        private void P1lvl_TextChanged(object sender, EventArgs e)
+        {
 
-        //}
+        }
     }
 }
