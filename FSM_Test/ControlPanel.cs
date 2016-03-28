@@ -24,6 +24,9 @@ public sealed class ControlPanel : IControl<List<Unit>, FSMac<i_STATES>>
             return _instance;
         }
     }
+    public string winText;
+
+    public string stats;
     //checks to see who attacks first.
     public List<Unit> Speed(List<Unit> List)
     {

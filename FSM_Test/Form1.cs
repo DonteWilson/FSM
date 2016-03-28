@@ -22,6 +22,7 @@ namespace FSM_Test
 
         public List<Unit> enemies = new List<Unit>();
         public List<Unit> BattleGroup = new List<Unit>();
+        public int UnitIndex = 0;
 
         public string p1name;
         public string p2name;
