@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.Start = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Attack1 = new System.Windows.Forms.Button();
+            this.Attack2 = new System.Windows.Forms.Button();
+            this.Attack3 = new System.Windows.Forms.Button();
             this.P1p = new System.Windows.Forms.PictureBox();
             this.P2p = new System.Windows.Forms.PictureBox();
             this.P3p = new System.Windows.Forms.PictureBox();
@@ -67,35 +67,35 @@
             this.Start.UseVisualStyleBackColor = true;
             this.Start.Click += new System.EventHandler(this.Start_Click);
             // 
-            // button2
+            // Attack1
             // 
-            this.button2.Location = new System.Drawing.Point(418, 322);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Lightning Dash";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.LDash_Click);
+            this.Attack1.Location = new System.Drawing.Point(418, 322);
+            this.Attack1.Name = "Attack1";
+            this.Attack1.Size = new System.Drawing.Size(111, 23);
+            this.Attack1.TabIndex = 1;
+            this.Attack1.Text = "Attack 1";
+            this.Attack1.UseVisualStyleBackColor = true;
+            this.Attack1.Click += new System.EventHandler(this.Attack1_Click);
             // 
-            // button3
+            // Attack2
             // 
-            this.button3.Location = new System.Drawing.Point(418, 351);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Agony";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Agony_Click);
+            this.Attack2.Location = new System.Drawing.Point(418, 351);
+            this.Attack2.Name = "Attack2";
+            this.Attack2.Size = new System.Drawing.Size(111, 23);
+            this.Attack2.TabIndex = 5;
+            this.Attack2.Text = "Attack 2";
+            this.Attack2.UseVisualStyleBackColor = true;
+            this.Attack2.Click += new System.EventHandler(this.Attack2_Click);
             // 
-            // button4
+            // Attack3
             // 
-            this.button4.Location = new System.Drawing.Point(418, 380);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "God\'s  Wrath";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.GodW_Click);
+            this.Attack3.Location = new System.Drawing.Point(418, 380);
+            this.Attack3.Name = "Attack3";
+            this.Attack3.Size = new System.Drawing.Size(111, 23);
+            this.Attack3.TabIndex = 6;
+            this.Attack3.Text = "Attack 3";
+            this.Attack3.UseVisualStyleBackColor = true;
+            this.Attack3.Click += new System.EventHandler(this.Attack3_Click);
             // 
             // P1p
             // 
@@ -253,9 +253,9 @@
             this.Controls.Add(this.P3p);
             this.Controls.Add(this.P2p);
             this.Controls.Add(this.P1p);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Attack3);
+            this.Controls.Add(this.Attack2);
+            this.Controls.Add(this.Attack1);
             this.Controls.Add(this.Start);
             this.Name = "Form2";
             this.Text = "Form1";
@@ -273,9 +273,9 @@
         #endregion
 
         private System.Windows.Forms.Button Start;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Attack1;
+        private System.Windows.Forms.Button Attack2;
+        private System.Windows.Forms.Button Attack3;
         private System.Windows.Forms.PictureBox P1p;
         private System.Windows.Forms.PictureBox P2p;
         private System.Windows.Forms.PictureBox P3p;

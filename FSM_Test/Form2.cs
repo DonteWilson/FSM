@@ -68,18 +68,6 @@ namespace FSM_Test
             //        }
             //    }
         }
-        private void LDash_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Agony_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void GodW_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -90,20 +78,98 @@ namespace FSM_Test
         {
             //State.Multiline = true;
         }
+        private void Attack1_Click(object sender, EventArgs e)
+        {
+            Unit a = refer.u.member[index];
 
-        private void button2_Click(object sender, EventArgs e)
+            if(Eparty[0].Life == true)
+            {
+                a.Combat(Eparty[0]);
+                CombatT.Text = a.stuff;
+
+                if(index == count)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index += 1;
+                }
+            }
+            if (refer.Control.Victorious(Party, Eparty) == true)
+            {
+                CombatT.Text += refer.Control.winText;
+
+                Party party = new FSM_Test.Party();
+
+                party.units = Party;
+
+                foreach (Unit u in party.units)
+                {
+                    u.HP = u.MHP;
+
+                    u.Life = true;
+                }
+                refer.Control.stats = "";
+                refer.Control.Objectstats(refer.u.member);
+                OStats.Text = refer.Control.stats;
+
+                Attack1.Enabled = false;
+                Attack2.Enabled = false;
+                Attack3.Enabled = false;
+                CState.Text = refer.Control.FSM.cState.name.ToString();
+            }
+            Engagement(index);
+
+        }
+
+        private void Attack2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Attack3_Click(object sender, EventArgs e)
         {
 
         }
+    
 
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+        private void Engagement(int num)
+        {
+            if (num == refer.u.member.Count)
+            {
+                num = 0;
+                index = 0;
+            }
+
+            Enum state = i_STATES.FIGHT as Enum;
+
+            if(refer.Control.FSM.cState.name != state)
+            {
+                refer.Control.FSM.Insert("fight");
+            }
+
+            if (refer.u.member[num].Type == "Player" && refer.u.member[num].Life == true)
+            {
+                CombatT.Text += refer.u.member[num].Name + "'s turn\n";
+
+                refer.Control.FSM.Insert("SwitchPlayer");
+            }
+            else if (refer.u.member[num].Type == "Enemy" && refer.u.member[num].Life == true)
+            {
+                CombatT.Text += refer.u.member[num].Name + "'s turn\n";
+
+                refer.Control.FSM.Insert("SwitchEnemy");
+            }
+            else
+            {
+                index += 1;
+                Engagement(index);
+            }
         }
         // First Blood
         private void FB(List<Unit> uList)
@@ -163,12 +229,56 @@ namespace FSM_Test
 
             
         }
-          public void PTurn()
+        public void PTurn()
         {
+            Attack1.Enabled = true;
+            Attack2.Enabled = true;
+            Attack3.Enabled = true;
+
+            CState.Text = refer.Control.FSM.cState.name.ToString();
 
         }
         public void ETurn()
         {
+            Attack1.Enabled = false;
+            Attack2.Enabled = false;
+            Attack3.Enabled = false;
+
+            CombatT.Text += refer.Control.FSM.cState.name.ToString() + "State \n";
+            CState.Text = refer.Control.FSM.cState.name.ToString();
+
+            if(refer.u.member[index].Type == "Enemy" && refer.u.member[index].Life == true)
+            {
+                Unit Fighter = refer.u.member[index];
+                Unit Defender = Fighter.encounter(Party);
+
+                Fighter.Combat(Defender);
+
+                CombatT.Text += Fighter.stuff;
+                if(index == count)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index += 1;
+                }
+            }
+            if (refer.Control.Victorious(Party, Eparty) == true)
+            {
+                CombatT.Text += refer.Control.winText;
+
+                refer.Control.stats = "";
+                refer.Control.Objectstats(refer.u.member);
+                OStats.Text = refer.Control.stats;
+
+                Attack1.Enabled = false;
+                Attack2.Enabled = false;
+                Attack3.Enabled = false;
+
+                CState.Text = refer.Control.FSM.cState.name.ToString();
+            }
+            Engagement(index);
 
         }
         public void Initiate()
@@ -267,6 +377,10 @@ namespace FSM_Test
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            Attack1.Enabled = false;
+            Attack2.Enabled = false;
+            Attack3.Enabled = false;
+
             count = refer.u.member.Count - 1;
             index = 0;
             index = refer.UnitIndex;
@@ -293,5 +407,6 @@ namespace FSM_Test
         {
             Application.Exit();
         }
+      
     }
 }

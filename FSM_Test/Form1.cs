@@ -22,7 +22,7 @@ namespace FSM_Test
         public ControlPanel Control = ControlPanel.instance;
         public Unit u = new Unit();
 
-        public List<Unit> enemies = new List<Unit>();
+        public List<Unit> Enemies = new List<Unit>();
 
         public List<Unit> BattleGroup = new List<Unit>();
 
@@ -48,12 +48,12 @@ namespace FSM_Test
         {
             SaveButton.Enabled = true;
 
-            List<Unit> NewGroup = PlayerObjects();
+            List<Unit> NewParty = PlayerObjects();
 
             List<Unit> players = new List<Unit>();
            
 
-            foreach (Unit i in NewGroup)
+            foreach (Unit i in NewParty)
             {
                 if(i.Type == "Player")
                 {
@@ -61,11 +61,11 @@ namespace FSM_Test
                 }
                 if(i.Type == "Enemy")
                 {
-                    enemies.Add(i);
+                    Enemies.Add(i);
                 }
             }
 
-            SetParties(players, enemies);
+            SetParties(players, Enemies);
 
         }
         //Creates player objects
@@ -140,6 +140,15 @@ namespace FSM_Test
             int p2 = r.Next(0, Plyr.Count - 1);
             int p3 = r.Next(0, Plyr.Count - 1);
 
+            while (p1 == p2)
+            {
+                p2 = r.Next(0, Plyr.Count - 1);
+            }
+            while(p1 == p3)
+            {
+                p3 = r.Next(0, Plyr.Count - 1);
+            }
+
             if (p1 != p2 && p1 != p3)
             {
                 P1NBox.Text = Plyr[p1].Name;
@@ -150,6 +159,17 @@ namespace FSM_Test
                 P1lvl.Text = Plyr[p1].Lvl.ToString();
                 BattleGroup.Add(Plyr[p1]);
             }
+            
+            while(p2 == p1)
+            {
+                p2 = r.Next(0, Plyr.Count - 1);
+            }
+
+            while(p2 == p3)
+            {
+                p3 = r.Next(0, Plyr.Count - 1);
+            }
+
             if (p2 != p3 && p2 != p1)
             {
                 P2NBox.Text = Plyr[p2].Name;
@@ -160,6 +180,17 @@ namespace FSM_Test
                 P2lvl.Text = Plyr[p2].Lvl.ToString();
                 BattleGroup.Add(Plyr[p2]);
             }
+            
+            while(p3 == p1)
+            {
+                p3 = r.Next(0, Plyr.Count - 1);
+                
+                while (p3 == p2)
+                {
+                    p3 = r.Next(0, Plyr.Count - 1);
+                }                  
+            }
+
             if (p3 != p2 && p3 != p1)
             {
                 P3NBox.Text = Plyr[p3].Name;
@@ -178,6 +209,24 @@ namespace FSM_Test
             int e1 = a.Next(0, Enmy.Count);
             int e2 = a.Next(0, Enmy.Count);
             int e3 = a.Next(0, Enmy.Count);
+
+            while(e1 == e2)
+            {
+                e2 = a.Next(0, Enmy.Count - 1);
+            }
+            while(e2 == e3)
+            {
+                e3 = a.Next(0, Enmy.Count - 1);
+            }
+            while(e3 == e1)
+            {
+                e1 = a.Next(0, Enmy.Count - 1);
+
+                while (e1 == e2)
+                {
+                    e1 = a.Next(0, Enmy.Count - 1);
+                }
+            }
 
             BattleGroup.Add(Enmy[e1]);
             BattleGroup.Add(Enmy[e2]);
@@ -282,24 +331,24 @@ namespace FSM_Test
                 {
                     if (i.Type == "Enemy")
                     {
-                        enemies.Add(i);
+                        Enemies.Add(i);
                     }
 
                 }
                 Random a = new Random();
 
-                int e1 = a.Next(0, enemies.Count);
-                int e2 = a.Next(0, enemies.Count);
-                int e3 = a.Next(0, enemies.Count);
+                int e1 = a.Next(0, Enemies.Count);
+                int e2 = a.Next(0, Enemies.Count);
+                int e3 = a.Next(0, Enemies.Count);
 
-                e1name = enemies[e1].Name;
-                e2name = enemies[e2].Name;
-                e3name = enemies[e3].Name;
+                e1name = Enemies[e1].Name;
+                e2name = Enemies[e2].Name;
+                e3name = Enemies[e3].Name;
 
 
-                BattleGroup.Add(enemies[e1]);
-                BattleGroup.Add(enemies[e2]);
-                BattleGroup.Add(enemies[e3]);
+                BattleGroup.Add(Enemies[e1]);
+                BattleGroup.Add(Enemies[e2]);
+                BattleGroup.Add(Enemies[e3]);
 
                 CharIcon(loadedunits.units);
             }

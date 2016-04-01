@@ -16,6 +16,7 @@ public class Unit : IStats, IAbilities<Unit>
     private List<Unit> m_member = new List<Unit>();
     private Unit m_uTarget;
     private bool m_uLife;
+    private int m_uMHP;
     private int m_uHP;
     private int m_uSpd;
     public string m_uName;
@@ -46,6 +47,17 @@ public class Unit : IStats, IAbilities<Unit>
         set
         {
             m_uName = value;
+        }
+    }
+    public int MHP
+    {
+        get
+        {
+            return m_uMHP;
+        }
+        set
+        {
+            m_uMHP = value;
         }
     }
     public int Dmg
