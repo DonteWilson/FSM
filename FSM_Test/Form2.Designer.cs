@@ -48,6 +48,7 @@
             this.P2 = new System.Windows.Forms.Label();
             this.P3 = new System.Windows.Forms.Label();
             this.CState = new System.Windows.Forms.TextBox();
+            this.CombatT = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.P1p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P2p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P3p)).BeginInit();
@@ -222,12 +223,21 @@
             this.CState.Size = new System.Drawing.Size(133, 63);
             this.CState.TabIndex = 21;
             // 
+            // CombatT
+            // 
+            this.CombatT.Location = new System.Drawing.Point(407, 170);
+            this.CombatT.Multiline = true;
+            this.CombatT.Name = "CombatT";
+            this.CombatT.Size = new System.Drawing.Size(134, 50);
+            this.CombatT.TabIndex = 22;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(995, 528);
+            this.Controls.Add(this.CombatT);
             this.Controls.Add(this.CState);
             this.Controls.Add(this.P3);
             this.Controls.Add(this.P2);
@@ -281,6 +291,7 @@
         private System.Windows.Forms.Label P2;
         private System.Windows.Forms.Label P3;
         private System.Windows.Forms.TextBox CState;
+        private System.Windows.Forms.TextBox CombatT;
     }
 }
 

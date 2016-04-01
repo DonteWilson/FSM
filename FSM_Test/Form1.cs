@@ -17,11 +17,17 @@ namespace FSM_Test
     {
         IO _Save = new IO();
 
+        Form2 Arena;
+
         public ControlPanel Control = ControlPanel.instance;
         public Unit u = new Unit();
 
         public List<Unit> enemies = new List<Unit>();
+
         public List<Unit> BattleGroup = new List<Unit>();
+
+        public string dState;
+
         public int UnitIndex = 0;
 
         public string p1name;
@@ -34,6 +40,8 @@ namespace FSM_Test
         public Form1()
         {
             InitializeComponent();
+
+            Arena = new Form2(this);
         }
         //Generates Player Party
         private void CreateParty_Click(object sender, EventArgs e)
@@ -179,25 +187,34 @@ namespace FSM_Test
         }
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            Control.FSM.AddState(i_STATES.INIT);
-            Control.FSM.AddState(i_STATES.START);
-            Control.FSM.AddState(i_STATES.FIGHT);
-            Control.FSM.AddState(i_STATES.PTURN);
-            Control.FSM.AddState(i_STATES.ETURN);
-            Control.FSM.AddState(i_STATES.EXIT);
+            Ctrl BeginCtrl = Arena.DisplayG;
+            Ctrl LocateCtrl = Arena.Locate;
+            Ctrl FightCtrl = Arena.Initiate;
+            Ctrl PTurnCtrl = Arena.PTurn;
+            Ctrl ETurnCtrl = Arena.ETurn;
+            Ctrl ExitCtrl = Arena.ExitGame;
 
-            Control.FSM.AddT(i_STATES.INIT, i_STATES.START);
-            Control.FSM.AddT(i_STATES.INIT, i_STATES.FIGHT);
-            Control.FSM.AddT(i_STATES.INIT, i_STATES.PTURN);
-            Control.FSM.AddT(i_STATES.INIT, i_STATES.ETURN);
-            Control.FSM.AddT(i_STATES.PTURN, i_STATES.FIGHT);
-            Control.FSM.AddT(i_STATES.ETURN, i_STATES.FIGHT);
-            Control.FSM.AddT(i_STATES.FIGHT, i_STATES.EXIT);
+            Control.FSM.State(i_STATES.START, null);
+            Control.FSM.State(i_STATES.LOCATE, LocateCtrl);
+            Control.FSM.State(i_STATES.FIGHT, FightCtrl);
+            Control.FSM.State(i_STATES.PTURN, PTurnCtrl);
+            Control.FSM.State(i_STATES.ETURN, ETurnCtrl);
+            Control.FSM.State(i_STATES.EXIT, ExitCtrl);
 
-            Control.FSM.TState(i_STATES.START);
+            Control.FSM.NewTransition(i_STATES.INIT, i_STATES.START, "begin");
+            Control.FSM.NewTransition(i_STATES.START, i_STATES.LOCATE, "locate");
+            Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.PTURN, "PTurn ");
+            Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.ETURN, "ETurn");
+            Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.FIGHT, "fight");
+            Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.FIGHT, "fight");
+            Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.PTURN, "SwitchPlayer");
+            Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.ETURN, "SwitchEnemy");
+            Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.EXIT, "Pquit");
+            Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.EXIT, "Equit");
 
-            SaveButton.Enabled = false;
-            textBox1.Text = Control.FSM.state.ToString();
+            Control.FSM.Insert("begin");
+
+            textBox1.Text = Control.FSM.cState.ToString();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

@@ -21,11 +21,10 @@ public interface IStats
     string Type { get; set; }
     string Name { get; set; }
 }
-public interface IControl<T,W>
+public interface IControl<T>
 {
     List<Unit> Speed(T u);
     bool Victorious(T p, T e);
-    void Fight(T u, W f);
     void Objectstats(T u);
    
 }

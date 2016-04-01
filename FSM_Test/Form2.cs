@@ -105,6 +105,29 @@ namespace FSM_Test
         {
 
         }
+        // First Blood
+        private void FB(List<Unit> uList)
+        {
+            CombatT.Text += "It is " + uList[index].Name + "'s turn\n";
+
+            if (refer.dState != null)
+            {
+                refer.Control.FSM.Insert(refer.dState);
+            }
+            else
+            {
+                if(uList[index].Type == "Enemy" && uList[index].Life == true)
+                {
+                    refer.Control.FSM.Insert("ETurn");
+                }
+                if(uList[index].Type == "Player" && uList[index].Life == true)
+                {
+                    refer.Control.FSM.Insert("PTurn");
+                }
+            }
+
+            OStats.Text = refer.Control.stats;
+        }
         public void Locate()
         {
             refer.u.member = refer.Control.Speed(refer.BattleGroup);
@@ -130,7 +153,23 @@ namespace FSM_Test
             E2.Text = Eparty[1].Name;
             E3.Text = Eparty[2].Name;
 
+            CharIcons(refer.u.member);
+
+            refer.Control.Objectstats(refer.u.member);
+
+            OStats.Text = refer.Control.stats;
+
+
+
             
+        }
+          public void PTurn()
+        {
+
+        }
+        public void ETurn()
+        {
+
         }
         public void Initiate()
         {
@@ -236,11 +275,23 @@ namespace FSM_Test
             P2.Text = refer.p2name;
             P3.Text = refer.p3name;
 
-            //refer.Control.FSM.Feed
+            refer.Control.FSM.Insert("locate");
+
+            CState.Text = refer.Control.FSM.cState.name.ToString();
 
 
 
             //CState.Text = refer.Control.FSM.state.ToString();
+        }
+
+        public void DisplayG()
+        {
+            CState.Text = refer.dState.ToString();
+            index = refer.UnitIndex;
+        }
+        public void ExitGame()
+        {
+            Application.Exit();
         }
     }
 }

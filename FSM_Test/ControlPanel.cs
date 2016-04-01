@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public sealed class ControlPanel : IControl<List<Unit>, FSMac<i_STATES>>
+public sealed class ControlPanel : IControl<List<Unit>>
 {
-    public FSMac<i_STATES> FSM = new FSMac<i_STATES>();
+    public FSM<i_STATES> FSM = new FSM<i_STATES>();
 
     ControlPanel() { }
 
@@ -38,7 +38,7 @@ public sealed class ControlPanel : IControl<List<Unit>, FSMac<i_STATES>>
         return sortedList;
     }
     //void Function for Fight
-    public void Fight(List<Unit> uList, FSMac<i_STATES> FSM)
+    public void Fight(List<Unit> uList)
     {
         //char input;
         ////Player list

@@ -8,6 +8,7 @@ public enum i_STATES
 {
     INIT,
     START,
+    LOCATE,
     FIGHT,
     PTURN,
     ETURN,

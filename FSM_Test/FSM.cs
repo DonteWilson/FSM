@@ -4,93 +4,171 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+public delegate void Ctrl();
+
 [Serializable]
-public class FSMac<T>
-{
+ public class State
+ {
+        public Enum name;
+
+        public Delegate d;
+
+        public State()
+        {
+
+        }
+
+        public State(Enum CState, Delegate TCtrl)
+        {
+            name = CState;
+
+            d = TCtrl;
+        }
+
+        public bool Ctrl()
+        {
+            if (d != null)
+            {
+                Ctrl c;
+
+                c = d as Ctrl;
+
+                c();
+
+                return true;                    
+            }
+
+            return false;
+        }     
+    }
+
     public class Transition
     {
-        public T from;
-
-        public T to;
-
-        public Transition(T f, T t)
+        public string input
         {
-            from = f;
-            to = t;
-                
+            get;
+            private set;
+        }
+
+        public State focus
+        {
+            get;
+            private set;
+        }
+        public Transition(string value, State s)
+        {
+            input = value;
+
+            focus = s;
         }
     }
-    private T _currentState;
 
-    [NonSerialized]private List<T> _states;
-    //Dictionary which has multiple transitional values
-    [NonSerialized]private Dictionary<T, List<Transition>> Transitions;
 
-    public T state
+    [Serializable]
+  public class FSM<T>
+{
+    public State cState
     {
-        get
+        get;
+        private set;
+    }
+
+    private List<State> _states;
+
+    private Dictionary<Enum, List<Transition>> Trans;
+
+    public FSM()
+    {
+        Trans = new Dictionary<Enum, List<Transition>>();
+
+        _states = new List<State>();
+
+        NewState();
+    }
+    public bool Insert<V>(V value)
+    {
+        foreach (Transition t in Trans[cState.name])
         {
-            return _currentState;
+            if (t.input == value.ToString())
+            {
+                cState = t.focus;
+
+                cState.Ctrl();
+
+                return true;
+            }
         }
-    }
-    public FSMac()
-    {
-        Transitions = new Dictionary<T, List<Transition>>();
 
-        _states = new List<T>();
+        return false;
     }
-    public bool AddState(T i)
+    public void NewState()
     {
-        if(_states.Contains(i))
+        if(typeof(T).IsEnum)
         {
-            Console.WriteLine("Unable to add state");
-            return false;
+            foreach (T states in Enum.GetValues(typeof(T)))
+            {
+                State state = new State(states as Enum, null);
+
+                _states.Add(state);
+
+                Trans.Add(state.name, new List<Transition>());
+            }
+
+            cState = _states[0];
         }
         else
         {
-            _states.Add(i);
-            Transitions.Add(i, new List<Transition>());
-            return true;
+            Console.WriteLine("Invalid " + typeof(T) + "is not of type Enum");
         }
     }
-    public void AddT(T f, T t)
+    public bool NewTransition<V>(T from, T to, V input)
     {
-        if(Transitions.ContainsKey(f))
-        {
-            Transitions[f].Add(new Transition(f, t));        
-        }
-    }
-    public void TState(T i)
-    {
-        dynamic Tstate = _currentState;
+        Enum f = from as Enum;
 
-        foreach (Transition t in Transitions[_currentState])
+        Enum t = to as Enum;
+
+        State focus = new State();
+
+        foreach (State s in _states)
         {
-            if(t.to.Equals(i))
+            if(s.name.ToString() == t.ToString())
             {
-                _currentState = i;
+                focus = s;
 
                 break;
             }
         }
-        if (Tstate == _currentState)
+        if (Trans.ContainsKey(f))
         {
-            Console.WriteLine("bad transition");
+            Transition transition = new Transition(input.ToString(), focus);
+
+            Trans[f].Add(transition);
         }
+        else
+        {
+            Console.WriteLine("Cannot find state");
+        }
+
+        return true;
     }
-    public void info()
+    public bool State(T ss, Delegate del)
     {
-        Console.WriteLine("FSM Contains....\n");
-        int count = 1;
+        Enum nState = ss as Enum;
 
-        foreach (T s in _states)
+        State newState = new State();
+
+        foreach (State s in _states)
         {
-            Console.WriteLine("State" + count.ToString() + " : " + s.ToString());
-            
+            if(s.name.ToString() == nState.ToString())
+            {
+                newState = s;
 
-            count++;
+                break;
+            }
         }
-        Console.WriteLine("\nCurrent State: " + _currentState);
+        newState.d = del;
+
+        return true;
     }
 
 }
