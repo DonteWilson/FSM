@@ -15,28 +15,34 @@ namespace FSM_Test
 {
     public partial class Form1 : Form
     {
+        //Creates
         IO _Save = new IO();
 
         Form2 Arena;
-
+        //Creates a singleton to the control panel as a public reference.
         public ControlPanel Control = ControlPanel.instance;
         public Unit u = new Unit();
-
+        //creates a list of enemy units
         public List<Unit> Enemies = new List<Unit>();
-
+        //creates a list of units in a battle group
         public List<Unit> BattleGroup = new List<Unit>();
-
+        //public string for deserialized state
         public string dState;
-
+        //stores the current unit index that was deserialized
         public int UnitIndex = 0;
-
+        //player 1 name
         public string p1name;
+        //player 2 name
         public string p2name;
+        //player 3 name
         public string p3name;
+        //enemy 1 name
         public string e1name;
+        //enemy 2 name
         public string e2name;
+        //enemy 3 name
         public string e3name;
-
+        //public constructor for form1
         public Form1()
         {
             InitializeComponent();
@@ -48,23 +54,26 @@ namespace FSM_Test
         {
             SaveButton.Enabled = true;
 
-            List<Unit> NewParty = PlayerObjects();
+            List<Unit> NewGroup = PlayerObjects();
 
             List<Unit> players = new List<Unit>();
            
-
-            foreach (Unit i in NewParty)
-            {
+            //loops through each enemy in the group
+            foreach (Unit i in NewGroup)
+            {//Looks to see if it is a player unit
                 if(i.Type == "Player")
                 {
+                    //if true add player
                     players.Add(i);
                 }
+                //Looks to see if it is a enemy unit
                 if(i.Type == "Enemy")
                 {
+                    //if true add enemy
                     Enemies.Add(i);
                 }
             }
-
+            //Call the generate party and passes the enemies and players in parameters.
             SetParties(players, Enemies);
 
         }
@@ -113,12 +122,14 @@ namespace FSM_Test
         {
             if(checkBox1.Checked == true )
             {
+                //Confirms if the player wants to keep the selected party.
                 DialogResult = MessageBox.Show("Are you sure about this party?\n", "Confirm", MessageBoxButtons.YesNo);
-
+                //Checks to see if the yes button is checked.
                 if(DialogResult == DialogResult.Yes)
-                {
-                    Form2 Combat = new Form2(this);
-                    Combat.ShowDialog();
+                {//sets the current form invisible
+                    this.Visible = false;
+                    //show the arena
+                    Arena.ShowDialog();
                 }
                 else
                 {
@@ -133,17 +144,19 @@ namespace FSM_Test
         {
             List<Unit> empty = new List<Unit>();
             BattleGroup.RemoveRange(0, BattleGroup.Count);
-
+            //creates a random class out of 3 possibilities
             Random r = new Random();
 
+            //Calls the next function to grab a random group of 3 members
             int p1 = r.Next(0, Plyr.Count - 1);
             int p2 = r.Next(0, Plyr.Count - 1);
             int p3 = r.Next(0, Plyr.Count - 1);
-
+            //goes through different players
             while (p1 == p2)
             {
                 p2 = r.Next(0, Plyr.Count - 1);
             }
+            //goes through different players
             while(p1 == p3)
             {
                 p3 = r.Next(0, Plyr.Count - 1);
@@ -234,6 +247,7 @@ namespace FSM_Test
 
 
         }
+        //Loads form 1 FSM states, along with delegates.
         private void Form1_Load_1(object sender, EventArgs e)
         {
             Ctrl BeginCtrl = Arena.DisplayG;
@@ -265,7 +279,7 @@ namespace FSM_Test
 
             textBox1.Text = Control.FSM.cState.ToString();
         }
-
+        //Saves current party.
         private void SaveButton_Click(object sender, EventArgs e)
         {
             Party party = new Party();
@@ -280,6 +294,7 @@ namespace FSM_Test
 
             _Save.Serialize("Party", party);
         }
+        //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
             Party loadedunits;
@@ -304,19 +319,24 @@ namespace FSM_Test
                 P1armor.Text = loadedunits.units[0].Armor.ToString();
                 P1lvl.Text = loadedunits.units[0].Lvl.ToString();
 
-                P2NBox.Text = loadedunits.units[0].Name;
-                P2hp.Text = loadedunits.units[0].HP.ToString();
-                P2dmg.Text = loadedunits.units[0].Dmg.ToString();
-                P2Spd.Text = loadedunits.units[0].Spd.ToString();
-                P2armor.Text = loadedunits.units[0].Armor.ToString();
-                P2lvl.Text = loadedunits.units[0].Lvl.ToString();
+                P2NBox.Text = loadedunits.units[1].Name;
+                P2hp.Text = loadedunits.units[1].HP.ToString();
+                P2dmg.Text = loadedunits.units[1].Dmg.ToString();
+                P2Spd.Text = loadedunits.units[1].Spd.ToString();
+                P2armor.Text = loadedunits.units[1].Armor.ToString();
+                P2lvl.Text = loadedunits.units[1].Lvl.ToString();
 
-                P3NBox.Text = loadedunits.units[0].Name;
-                P3hp.Text = loadedunits.units[0].HP.ToString();
-                P3dmg.Text = loadedunits.units[0].Dmg.ToString();
-                P3Spd.Text = loadedunits.units[0].Spd.ToString();
-                P3armor.Text = loadedunits.units[0].Armor.ToString();
-                P3lvl.Text = loadedunits.units[0].Lvl.ToString();
+                P3NBox.Text = loadedunits.units[2].Name;
+                P3hp.Text = loadedunits.units[2].HP.ToString();
+                P3dmg.Text = loadedunits.units[2].Dmg.ToString();
+                P3Spd.Text = loadedunits.units[2].Spd.ToString();
+                P3armor.Text = loadedunits.units[2].Armor.ToString();
+                P3lvl.Text = loadedunits.units[2].Lvl.ToString();
+
+                if(BattleGroup.Count >= 1)
+                {
+                    BattleGroup.RemoveRange(0, BattleGroup.Count);
+                }
 
                 foreach (Unit i in loadedunits.units)
                 {
@@ -341,6 +361,28 @@ namespace FSM_Test
                 int e2 = a.Next(0, Enemies.Count);
                 int e3 = a.Next(0, Enemies.Count);
 
+                while (e1 == e2)
+                {
+                    e2 = a.Next(0, Enemies.Count - 1);
+                }
+
+                while (e2 == e3)
+                {
+                    e3 = a.Next(0, Enemies.Count - 1);
+                }
+
+                while (e3 == e1)
+                {
+                    e1 = a.Next(0, Enemies.Count - 1);
+
+                    while (e1 == e2)
+                    {
+                        e1 = a.Next(0, Enemies.Count - 1);
+
+                    }
+                }
+
+
                 e1name = Enemies[e1].Name;
                 e2name = Enemies[e2].Name;
                 e3name = Enemies[e3].Name;
@@ -353,7 +395,7 @@ namespace FSM_Test
                 CharIcon(loadedunits.units);
             }
         }
-       
+       //Gives each player unity a certain icon to display difference.
         private void CharIcon(List<Unit> units)
         {
             for(int i = 0; i < units.Count; i++)

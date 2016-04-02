@@ -119,6 +119,7 @@
             // 
             // P2NBox
             // 
+            this.P2NBox.Enabled = false;
             this.P2NBox.Location = new System.Drawing.Point(57, 295);
             this.P2NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2NBox.Name = "P2NBox";
@@ -127,6 +128,7 @@
             // 
             // P2hp
             // 
+            this.P2hp.Enabled = false;
             this.P2hp.Location = new System.Drawing.Point(57, 322);
             this.P2hp.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2hp.Name = "P2hp";
@@ -136,6 +138,7 @@
             // 
             // P2armor
             // 
+            this.P2armor.Enabled = false;
             this.P2armor.Location = new System.Drawing.Point(57, 373);
             this.P2armor.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2armor.Name = "P2armor";
@@ -144,6 +147,7 @@
             // 
             // P2Spd
             // 
+            this.P2Spd.Enabled = false;
             this.P2Spd.Location = new System.Drawing.Point(57, 398);
             this.P2Spd.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2Spd.Name = "P2Spd";
@@ -152,6 +156,7 @@
             // 
             // P3NBox
             // 
+            this.P3NBox.Enabled = false;
             this.P3NBox.Location = new System.Drawing.Point(240, 3);
             this.P3NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3NBox.Name = "P3NBox";
@@ -160,6 +165,7 @@
             // 
             // P3hp
             // 
+            this.P3hp.Enabled = false;
             this.P3hp.Location = new System.Drawing.Point(240, 29);
             this.P3hp.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3hp.Name = "P3hp";
@@ -168,6 +174,7 @@
             // 
             // P3armor
             // 
+            this.P3armor.Enabled = false;
             this.P3armor.Location = new System.Drawing.Point(240, 81);
             this.P3armor.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3armor.Name = "P3armor";
@@ -176,6 +183,7 @@
             // 
             // P3Spd
             // 
+            this.P3Spd.Enabled = false;
             this.P3Spd.Location = new System.Drawing.Point(240, 107);
             this.P3Spd.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3Spd.Name = "P3Spd";
@@ -195,6 +203,7 @@
             // 
             // P3dmg
             // 
+            this.P3dmg.Enabled = false;
             this.P3dmg.Location = new System.Drawing.Point(240, 55);
             this.P3dmg.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3dmg.Name = "P3dmg";
@@ -203,6 +212,7 @@
             // 
             // P3lvl
             // 
+            this.P3lvl.Enabled = false;
             this.P3lvl.Location = new System.Drawing.Point(240, 133);
             this.P3lvl.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3lvl.Name = "P3lvl";

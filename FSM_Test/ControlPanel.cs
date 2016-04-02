@@ -4,42 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//Creates a a sealed ControlPanel class as a singleton pattern. 
 public sealed class ControlPanel : IControl<List<Unit>>
 {
+    //Creates an instance of a FSM with an i_STATES type
     public FSM<i_STATES> FSM = new FSM<i_STATES>();
 
+    //Constructor for Control Panel
     ControlPanel() { }
 
+    //Private class variable
     static private ControlPanel _instance;
 
+    //Public class varible
     static public ControlPanel instance
     {
         get
         {
+            //Checks to see if instance exist
             if (_instance == null)
-            {
+            {   // if it doesnt exist it creates one
                 _instance = new ControlPanel();
             }
+            //returns instance.
             return _instance;
         }
     }
     public string winText;
 
+    //Keeps track of all stats on player objects.
     public string stats;
     //checks to see who attacks first.
     public List<Unit> Speed(List<Unit> List)
     {
+        //Create a unit list.
         List<Unit> sortedList = new List<Unit>();
-
+        //Sorts the list by speed stats in a descending order.
         sortedList = List.OrderByDescending(u => u.Spd).ToList<Unit>();
         Console.WriteLine(sortedList.ElementAt(0).Name + "I'll draw first");
-
+        //return the sorted list
         return sortedList;
     }
     //void Function for Fight
-    public void Fight(List<Unit> uList)
-    {
+    //public void Fight(List<Unit> uList)
+    //{
         //char input;
         ////Player list
         //Player listp = new Player();
@@ -67,7 +75,7 @@ public sealed class ControlPanel : IControl<List<Unit>>
 
         //    }
         //}
-    }
+   // }
     //Displays the stats of a Player
     public void Objectstats(List<Unit> ulist)
     {
