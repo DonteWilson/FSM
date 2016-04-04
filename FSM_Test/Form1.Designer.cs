@@ -157,16 +157,17 @@
             // P3NBox
             // 
             this.P3NBox.Enabled = false;
-            this.P3NBox.Location = new System.Drawing.Point(240, 3);
+            this.P3NBox.Location = new System.Drawing.Point(327, 2);
             this.P3NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3NBox.Name = "P3NBox";
             this.P3NBox.Size = new System.Drawing.Size(29, 20);
             this.P3NBox.TabIndex = 12;
+            this.P3NBox.TextChanged += new System.EventHandler(this.P3NBox_TextChanged);
             // 
             // P3hp
             // 
             this.P3hp.Enabled = false;
-            this.P3hp.Location = new System.Drawing.Point(240, 29);
+            this.P3hp.Location = new System.Drawing.Point(327, 29);
             this.P3hp.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3hp.Name = "P3hp";
             this.P3hp.Size = new System.Drawing.Size(29, 20);
@@ -175,7 +176,7 @@
             // P3armor
             // 
             this.P3armor.Enabled = false;
-            this.P3armor.Location = new System.Drawing.Point(240, 81);
+            this.P3armor.Location = new System.Drawing.Point(327, 81);
             this.P3armor.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3armor.Name = "P3armor";
             this.P3armor.Size = new System.Drawing.Size(29, 20);
@@ -184,7 +185,7 @@
             // P3Spd
             // 
             this.P3Spd.Enabled = false;
-            this.P3Spd.Location = new System.Drawing.Point(240, 107);
+            this.P3Spd.Location = new System.Drawing.Point(327, 107);
             this.P3Spd.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3Spd.Name = "P3Spd";
             this.P3Spd.Size = new System.Drawing.Size(29, 20);
@@ -204,7 +205,7 @@
             // P3dmg
             // 
             this.P3dmg.Enabled = false;
-            this.P3dmg.Location = new System.Drawing.Point(240, 55);
+            this.P3dmg.Location = new System.Drawing.Point(327, 55);
             this.P3dmg.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3dmg.Name = "P3dmg";
             this.P3dmg.Size = new System.Drawing.Size(29, 20);
@@ -213,7 +214,7 @@
             // P3lvl
             // 
             this.P3lvl.Enabled = false;
-            this.P3lvl.Location = new System.Drawing.Point(240, 133);
+            this.P3lvl.Location = new System.Drawing.Point(327, 129);
             this.P3lvl.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3lvl.Name = "P3lvl";
             this.P3lvl.Size = new System.Drawing.Size(29, 20);
@@ -290,7 +291,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(92, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
@@ -299,16 +300,16 @@
             // 
             this.pictureBox2.Location = new System.Drawing.Point(92, 298);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 150);
+            this.pictureBox2.Size = new System.Drawing.Size(150, 150);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(275, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(362, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 150);
+            this.pictureBox3.Size = new System.Drawing.Size(150, 150);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 29;
             this.pictureBox3.TabStop = false;
@@ -424,7 +425,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(193, 10);
+            this.label13.Location = new System.Drawing.Point(287, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 42;
@@ -433,7 +434,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(193, 36);
+            this.label14.Location = new System.Drawing.Point(274, 32);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 43;
@@ -442,7 +443,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(193, 58);
+            this.label15.Location = new System.Drawing.Point(274, 58);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(47, 13);
             this.label15.TabIndex = 44;
@@ -451,7 +452,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(193, 88);
+            this.label16.Location = new System.Drawing.Point(287, 88);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(34, 13);
             this.label16.TabIndex = 45;
@@ -460,7 +461,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(193, 114);
+            this.label17.Location = new System.Drawing.Point(288, 114);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(26, 13);
             this.label17.TabIndex = 46;
@@ -469,7 +470,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(193, 136);
+            this.label18.Location = new System.Drawing.Point(288, 136);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(33, 13);
             this.label18.TabIndex = 47;

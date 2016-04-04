@@ -369,9 +369,88 @@ namespace FSM_Test
                             P3p.Image = Properties.Resources.Sneaky;
                             break;
                         default:
+                            break;                   
+                    }
+                }
+                if (units[i].Name == E1.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Savor":
+                            E1p.Image = Properties.Resources.Savor;
+                            break;
+                        case "Atoli":
+                            E1p.Image = Properties.Resources.Atoli;
+                            break;
+                        case "Muur":
+                            E1p.Image = Properties.Resources.Muur;
+                            break;
+                        case "Friv":
+                            E1p.Image = Properties.Resources.Friv;
+                            break;
+                        case "Violet":
+                            E1p.Image = Properties.Resources.Violet;
+                            break;
+                        case "Loki":
+                            E1p.Image = Properties.Resources.Loki;
+                            break;
+                        default:
                             break;
                     }
                 }
+                if (units[i].Name == E2.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Savor":
+                            E2p.Image = Properties.Resources.Savor;
+                            break;
+                        case "Atoli":
+                            E2p.Image = Properties.Resources.Atoli;
+                            break;
+                        case "Muur":
+                            E2p.Image = Properties.Resources.Muur;
+                            break;
+                        case "Friv":
+                            E2p.Image = Properties.Resources.Friv;
+                            break;
+                        case "Violet":
+                            E2p.Image = Properties.Resources.Violet;
+                            break;
+                        case "Loki":
+                            E2p.Image = Properties.Resources.Loki;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (units[i].Name == E3.Text)
+                {
+                    switch (units[i].Name)
+                    {
+                        case "Savor":
+                            E3p.Image = Properties.Resources.Savor;
+                            break;
+                        case "Atoli":
+                            E3p.Image = Properties.Resources.Atoli;
+                            break;
+                        case "Muur":
+                            E3p.Image = Properties.Resources.Muur;
+                            break;
+                        case "Friv":
+                            E3p.Image = Properties.Resources.Friv;
+                            break;
+                        case "Violet":
+                            E3p.Image = Properties.Resources.Violet;
+                            break;
+                        case "Loki":
+                            E3p.Image = Properties.Resources.Loki;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
             }
         }
 

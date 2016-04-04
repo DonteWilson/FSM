@@ -36,9 +36,9 @@
             this.P1p = new System.Windows.Forms.PictureBox();
             this.P2p = new System.Windows.Forms.PictureBox();
             this.P3p = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.E1p = new System.Windows.Forms.PictureBox();
+            this.E2p = new System.Windows.Forms.PictureBox();
+            this.E3p = new System.Windows.Forms.PictureBox();
             this.FightSequence = new System.Windows.Forms.TextBox();
             this.OStats = new System.Windows.Forms.TextBox();
             this.E1 = new System.Windows.Forms.Label();
@@ -52,9 +52,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.P1p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P2p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P3p)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E1p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E2p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E3p)).BeginInit();
             this.SuspendLayout();
             // 
             // Start
@@ -101,15 +101,15 @@
             // 
             this.P1p.Location = new System.Drawing.Point(87, 39);
             this.P1p.Name = "P1p";
-            this.P1p.Size = new System.Drawing.Size(117, 158);
+            this.P1p.Size = new System.Drawing.Size(150, 150);
             this.P1p.TabIndex = 7;
             this.P1p.TabStop = false;
             // 
             // P2p
             // 
-            this.P2p.Location = new System.Drawing.Point(279, 39);
+            this.P2p.Location = new System.Drawing.Point(254, 39);
             this.P2p.Name = "P2p";
-            this.P2p.Size = new System.Drawing.Size(110, 158);
+            this.P2p.Size = new System.Drawing.Size(150, 150);
             this.P2p.TabIndex = 8;
             this.P2p.TabStop = false;
             // 
@@ -117,33 +117,33 @@
             // 
             this.P3p.Location = new System.Drawing.Point(87, 226);
             this.P3p.Name = "P3p";
-            this.P3p.Size = new System.Drawing.Size(117, 162);
+            this.P3p.Size = new System.Drawing.Size(150, 150);
             this.P3p.TabIndex = 9;
             this.P3p.TabStop = false;
             // 
-            // pictureBox4
+            // E1p
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(547, 39);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(109, 158);
-            this.pictureBox4.TabIndex = 10;
-            this.pictureBox4.TabStop = false;
+            this.E1p.Location = new System.Drawing.Point(547, 39);
+            this.E1p.Name = "E1p";
+            this.E1p.Size = new System.Drawing.Size(150, 150);
+            this.E1p.TabIndex = 10;
+            this.E1p.TabStop = false;
             // 
-            // pictureBox5
+            // E2p
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(741, 39);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(108, 158);
-            this.pictureBox5.TabIndex = 11;
-            this.pictureBox5.TabStop = false;
+            this.E2p.Location = new System.Drawing.Point(741, 39);
+            this.E2p.Name = "E2p";
+            this.E2p.Size = new System.Drawing.Size(150, 150);
+            this.E2p.TabIndex = 11;
+            this.E2p.TabStop = false;
             // 
-            // pictureBox6
+            // E3p
             // 
-            this.pictureBox6.Location = new System.Drawing.Point(741, 226);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(108, 162);
-            this.pictureBox6.TabIndex = 12;
-            this.pictureBox6.TabStop = false;
+            this.E3p.Location = new System.Drawing.Point(741, 226);
+            this.E3p.Name = "E3p";
+            this.E3p.Size = new System.Drawing.Size(150, 150);
+            this.E3p.TabIndex = 12;
+            this.E3p.TabStop = false;
             // 
             // FightSequence
             // 
@@ -247,9 +247,9 @@
             this.Controls.Add(this.E1);
             this.Controls.Add(this.OStats);
             this.Controls.Add(this.FightSequence);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.E3p);
+            this.Controls.Add(this.E2p);
+            this.Controls.Add(this.E1p);
             this.Controls.Add(this.P3p);
             this.Controls.Add(this.P2p);
             this.Controls.Add(this.P1p);
@@ -262,9 +262,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.P1p)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P2p)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P3p)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E1p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E2p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.E3p)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,9 +279,9 @@
         private System.Windows.Forms.PictureBox P1p;
         private System.Windows.Forms.PictureBox P2p;
         private System.Windows.Forms.PictureBox P3p;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox E1p;
+        private System.Windows.Forms.PictureBox E2p;
+        private System.Windows.Forms.PictureBox E3p;
         private System.Windows.Forms.TextBox FightSequence;
         private System.Windows.Forms.TextBox OStats;
         private System.Windows.Forms.Label E1;
