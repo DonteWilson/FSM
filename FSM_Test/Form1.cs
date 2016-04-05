@@ -26,6 +26,8 @@ namespace FSM_Test
         public List<Unit> Enemies = new List<Unit>();
         //creates a list of units in a battle group
         public List<Unit> BattleGroup = new List<Unit>();
+        //public string for file name
+        public string Fname;
         //public string for deserialized state
         public string dState;
         //stores the current unit index that was deserialized
@@ -250,33 +252,45 @@ namespace FSM_Test
         //Loads form 1 FSM states, along with delegates.
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            Ctrl BeginCtrl = Arena.DisplayG;
+            Ctrl StartCtrl = Arena.DisplayG;
             Ctrl LocateCtrl = Arena.Locate;
             Ctrl FightCtrl = Arena.Initiate;
             Ctrl PTurnCtrl = Arena.PTurn;
             Ctrl ETurnCtrl = Arena.ETurn;
             Ctrl ExitCtrl = Arena.ExitGame;
+            Ctrl BeginCtrl = Arena.refer.Begin;
 
-            Control.FSM.State(i_STATES.START, null);
+            Control.FSM.State(i_STATES.START, BeginCtrl);
             Control.FSM.State(i_STATES.LOCATE, LocateCtrl);
             Control.FSM.State(i_STATES.FIGHT, FightCtrl);
             Control.FSM.State(i_STATES.PTURN, PTurnCtrl);
             Control.FSM.State(i_STATES.ETURN, ETurnCtrl);
             Control.FSM.State(i_STATES.EXIT, ExitCtrl);
-
+            //Switches from Init to Start
             Control.FSM.NewTransition(i_STATES.INIT, i_STATES.START, "begin");
+            //Switches from Start to Locate
             Control.FSM.NewTransition(i_STATES.START, i_STATES.LOCATE, "locate");
+            //Switches from Locate to PTURN
             Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.PTURN, "PTurn ");
+            //Switches from Locate to ETURN
             Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.ETURN, "ETurn");
+            //Switches from PTURN to FIGHT
             Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.FIGHT, "fight");
+            //Switches from ETURN to FIGHT
             Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.FIGHT, "fight");
+            //Switches from FIGHT to PTURN
             Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.PTURN, "SwitchPlayer");
+            //Switches from FIGHT to ETURN
             Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.ETURN, "SwitchEnemy");
+            //Switches from PTURN to EXIT
             Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.EXIT, "Pquit");
+            //Switches from ETURN to EXIT
             Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.EXIT, "Equit");
 
+            //Returns to start
             Control.FSM.Insert("begin");
 
+            //Displays current state
             textBox1.Text = Control.FSM.cState.ToString();
         }
         //Saves current party.
@@ -284,8 +298,10 @@ namespace FSM_Test
         {
             Party party = new Party();
 
+            //perform this action for each object in battlegroup list
             foreach (Unit i in BattleGroup)
             {
+                //Checks to see if the type is Player
                 if (i.Type == "Player")
                 {
                     party.units.Add(i);
@@ -297,103 +313,163 @@ namespace FSM_Test
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            Party loadedunits;
-
-
-            OpenFileDialog DialogWindow = new OpenFileDialog();
-            DialogWindow.InitialDirectory = @"..\SavedParties";
-            DialogWindow.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            DialogWindow.FilterIndex = 2;
-            DialogWindow.RestoreDirectory = true;
-
-            if (DialogWindow.ShowDialog() == DialogResult.OK)
-            {
-
-                string chosenFile = DialogWindow.FileName;
-                loadedunits = _Save.Deserialize<Party>(chosenFile);
-
-                P1NBox.Text = loadedunits.units[0].Name;
-                P1hp.Text = loadedunits.units[0].HP.ToString();
-                P1dmg.Text = loadedunits.units[0].Dmg.ToString();
-                P1Spd.Text = loadedunits.units[0].Spd.ToString();
-                P1armor.Text = loadedunits.units[0].Armor.ToString();
-                P1lvl.Text = loadedunits.units[0].Lvl.ToString();
-
-                P2NBox.Text = loadedunits.units[1].Name;
-                P2hp.Text = loadedunits.units[1].HP.ToString();
-                P2dmg.Text = loadedunits.units[1].Dmg.ToString();
-                P2Spd.Text = loadedunits.units[1].Spd.ToString();
-                P2armor.Text = loadedunits.units[1].Armor.ToString();
-                P2lvl.Text = loadedunits.units[1].Lvl.ToString();
-
-                P3NBox.Text = loadedunits.units[2].Name;
-                P3hp.Text = loadedunits.units[2].HP.ToString();
-                P3dmg.Text = loadedunits.units[2].Dmg.ToString();
-                P3Spd.Text = loadedunits.units[2].Spd.ToString();
-                P3armor.Text = loadedunits.units[2].Armor.ToString();
-                P3lvl.Text = loadedunits.units[2].Lvl.ToString();
-
-                if(BattleGroup.Count >= 1)
-                {
-                    BattleGroup.RemoveRange(0, BattleGroup.Count);
-                }
-
-                foreach (Unit i in loadedunits.units)
-                {
-                    BattleGroup.Add(i);
-                }
-
-                List<Unit> tempParty = new List<Unit>();
-
-                tempParty = PlayerObjects();
-
-                foreach (Unit i in tempParty)
-                {
-                    if (i.Type == "Enemy")
-                    {
-                        Enemies.Add(i);
-                    }
-
-                }
-                Random a = new Random();
-
-                int e1 = a.Next(0, Enemies.Count);
-                int e2 = a.Next(0, Enemies.Count);
-                int e3 = a.Next(0, Enemies.Count);
-
-                while (e1 == e2)
-                {
-                    e2 = a.Next(0, Enemies.Count - 1);
-                }
-
-                while (e2 == e3)
-                {
-                    e3 = a.Next(0, Enemies.Count - 1);
-                }
-
-                while (e3 == e1)
-                {
-                    e1 = a.Next(0, Enemies.Count - 1);
-
-                    while (e1 == e2)
-                    {
-                        e1 = a.Next(0, Enemies.Count - 1);
-
-                    }
-                }
-
-
-                e1name = Enemies[e1].Name;
-                e2name = Enemies[e2].Name;
-                e3name = Enemies[e3].Name;
-
-
-                BattleGroup.Add(Enemies[e1]);
-                BattleGroup.Add(Enemies[e2]);
-                BattleGroup.Add(Enemies[e3]);
-
-                CharIcon(loadedunits.units);
+            //Disables NewGame button
+            NewGame.Enabled = false;
+            //Create a new OpenFileDialog 
+            OpenFileDialog LoadWindow = new OpenFileDialog();
+            //Set a directory as a string to a string variable
+            string path = @"..\Game Saves";
+            //This allows multiselect for the user
+            LoadWindow.Multiselect = true;
+            //If the initial directory is not equal to the path variable
+            if (LoadWindow.InitialDirectory != path)
+            {//Set the directory to the path variable
+                LoadWindow.InitialDirectory = path;
             }
+            //Set file type choices to appear
+            LoadWindow.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            //Sets filter selected
+            LoadWindow.FilterIndex = 2;
+            //Set the current form to not be visible
+            Visible = false;
+            //Create an instance of a new party
+            Party EnemyE = new Party();
+            //Create an instance of a new party
+            Party PlayerP = new Party();
+
+            //If the ok button is clicked
+            if (LoadWindow.ShowDialog() == DialogResult.OK)
+            {//Deserilalize the designated file name as a party object and store it into the PlayerP variable
+                PlayerP = _Save.Deserialize<Party>(@"..\Game Saves\PartyData.xml");
+                //Set the player1name to the given index of the PlayerP.unit
+                p1name = PlayerP.units[0].Name;
+                //Set the player2name to the given index of the PlayerP.unit
+                p2name = PlayerP.units[1].Name;
+                //Set the player3name to the given index of the PlayerP.unit
+                p3name = PlayerP.units[2].Name;
+
+                //Add the new units to the BattleReadyParty List
+                BattleGroup.Add(PlayerP.units[0]);
+                BattleGroup.Add(PlayerP.units[1]);
+                BattleGroup.Add(PlayerP.units[2]);
+
+                //Deserilalize the designated file name as a party object and store it into the EnemyE variable
+                EnemyE = _Save.Deserialize<Party>(@"..\Game Saves\EnemyParty.xml");
+                //Set the enemy1name to the given index of the EnemyE.unit
+                e1name = EnemyE.units[0].Name;
+                //Set the enemy1name to the given index of the EnemyE.unit
+                e2name = EnemyE.units[1].Name;
+                //Set the enemy1name to the given index of the EnemyE.unit
+                e3name = EnemyE.units[2].Name;
+
+                //Add the units loaded onto the battle group list
+                BattleGroup.Add(EnemyE.units[0]);
+                BattleGroup.Add(EnemyE.units[1]);
+                BattleGroup.Add(EnemyE.units[2]);
+
+                //Deserilalize the designated file name as an int object and store it into the currentUnitIndex variable
+                UnitIndex = _Save.Deserialize<int>(@"..\Game Saves\Turn.xml");
+
+                //Deserilalize the designated file name as a string object and store it into the deserializedState variable
+                dState = _Save.Deserialize<string>(@"..\Game Saves\GameData.xml");
+
+                //Calls the function to display game
+                Arena.DisplayG();
+                //Shows dialog for Arena
+                Arena.ShowDialog();
+            }
+            //If the ok button is not clicked
+            else
+            {//Enable to the New Game Button
+                NewGame.Enabled = true;
+                //Allow the form to be visible
+                Visible = true;
+            }
+
+
+
+        }
+        public void Begin()
+        {
+            this.Visible = true;
+            //Set the other form to be disabled
+            Arena.Visible = false;
+            //Uncheck the LockInPartyCheckBox
+            checkBox1.Checked = false;
+            //Disable the LockInPartyCheckBox
+            //Enables the New Game Button
+            NewGame.Enabled = true;
+            //Disables checkbox 1 button
+            checkBox1.Enabled = false;
+            //Enable the Load Game Button
+            button3.Enabled = true;
+            //Remoave all elements of the BattleReadyParty list
+            BattleGroup.RemoveRange(0, BattleGroup.Count);
+            //Disable the load party button
+            //LoadButton.Enabled = false;
+            //Disable the save button
+            SaveButton.Enabled = false;
+            //Disable the Generate Party Button
+            button1.Enabled = false;
+            //Set the statsText to ""
+            Control.stats = "";
+            //Set the pictureBox1 Image to null
+            pictureBox1.Image = null;
+            //Set the pictureBox2 Image to null
+            pictureBox2.Image = null;
+            //Set the pictureBox3 Image to null
+            pictureBox3.Image = null;
+
+            //If the Enemies list Count is greater than or equal to 1
+            if (Enemies.Count >= 1)
+            {//Remove all elements in the Enemies List
+                Enemies.RemoveRange(0, Enemies.Count);
+            }
+
+            //sets p1 name box
+            P1NBox.Text = "";
+            //Set p1 name to ""
+            p1name = "";
+            //Set the P1HealthBox.Text to ""
+            P1hp.Text = "";
+            //Set the P1StrengthBox.Text to ""
+            P1dmg.Text = "";
+            //Set armor.text to ""
+            P1armor.Text = "";
+            //Set the P1SpeedBox.Text to ""
+            P1Spd.Text = "";
+            //Set the P1LevelBox.Text to ""
+            P1lvl.Text = "";
+
+            //Set the P2NameBox.Text to ""
+            P2NBox.Text = "";
+            //Set the Player2name to ""
+            p2name = "";
+            //Set the P2HealthBox.Text to ""
+            P2hp.Text = "";
+            //Set the P2StrengthBox.Text to ""
+            P2dmg.Text = "";
+            //Set the P2DefenseBox.Text to ""
+            P2armor.Text = "";
+            //Set the P2SpeedBox.Text to ""
+            P2Spd.Text = "";
+            //Set the P2LevelBox.Text to ""
+            P2lvl.Text = "";
+
+            //Set the P3NameBox.Text to ""
+            P3NBox.Text = "";
+            //Set the player3name to ""
+            p3name = "";
+            //Set the P3HealthBox.Text to ""
+            P3hp.Text = "";
+            //Set the P3StrengthBox.Text to ""
+            P3dmg.Text = "";
+            //Set the P3DefenseBox.Text to ""
+            P3armor.Text = "";
+            //Set the P2SpeedBox.Text to ""
+            P3Spd.Text = "";
+            //Set the P3LevelBox.Text to ""
+            P3lvl.Text = "";
         }
        //Gives each player unity a certain icon to display difference.
         private void CharIcon(List<Unit> units)
@@ -493,6 +569,16 @@ namespace FSM_Test
 
         private void P3NBox_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void NewGame_Click(object sender, EventArgs e)
+        {
+            NewGame.Enabled = false;
+
+            checkBox1.Enabled = true;
+
+            button1.Enabled = true;
 
         }
     }

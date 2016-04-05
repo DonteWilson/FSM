@@ -49,6 +49,7 @@
             this.P3 = new System.Windows.Forms.Label();
             this.CState = new System.Windows.Forms.TextBox();
             this.CombatT = new System.Windows.Forms.TextBox();
+            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.P1p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P2p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P3p)).BeginInit();
@@ -69,7 +70,7 @@
             // 
             // Attack1
             // 
-            this.Attack1.Location = new System.Drawing.Point(418, 322);
+            this.Attack1.Location = new System.Drawing.Point(278, 322);
             this.Attack1.Name = "Attack1";
             this.Attack1.Size = new System.Drawing.Size(111, 23);
             this.Attack1.TabIndex = 1;
@@ -79,7 +80,7 @@
             // 
             // Attack2
             // 
-            this.Attack2.Location = new System.Drawing.Point(418, 351);
+            this.Attack2.Location = new System.Drawing.Point(418, 322);
             this.Attack2.Name = "Attack2";
             this.Attack2.Size = new System.Drawing.Size(111, 23);
             this.Attack2.TabIndex = 5;
@@ -89,7 +90,7 @@
             // 
             // Attack3
             // 
-            this.Attack3.Location = new System.Drawing.Point(418, 380);
+            this.Attack3.Location = new System.Drawing.Point(556, 322);
             this.Attack3.Name = "Attack3";
             this.Attack3.Size = new System.Drawing.Size(111, 23);
             this.Attack3.TabIndex = 6;
@@ -231,12 +232,23 @@
             this.CombatT.Size = new System.Drawing.Size(134, 50);
             this.CombatT.TabIndex = 22;
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(430, 353);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 23;
+            this.SaveButton.Text = "Save ";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SB_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(995, 528);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.CombatT);
             this.Controls.Add(this.CState);
             this.Controls.Add(this.P3);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.Label P3;
         private System.Windows.Forms.TextBox CState;
         private System.Windows.Forms.TextBox CombatT;
+        private System.Windows.Forms.Button SaveButton;
     }
 }
 

@@ -73,6 +73,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.NewGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -229,7 +230,8 @@
             this.P2lvl.TabIndex = 19;
             // 
             // P2dmg
-            // 
+            //
+            this.P2dmg.Enabled = false; 
             this.P2dmg.Location = new System.Drawing.Point(57, 347);
             this.P2dmg.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2dmg.Name = "P2dmg";
@@ -238,6 +240,7 @@
             // 
             // P1NBox
             // 
+            this.P1NBox.Enabled = false;
             this.P1NBox.Location = new System.Drawing.Point(57, 3);
             this.P1NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1NBox.Name = "P1NBox";
@@ -248,6 +251,7 @@
             // 
             // P1hp
             // 
+            this.P1hp.Enabled = false;
             this.P1hp.Location = new System.Drawing.Point(57, 29);
             this.P1hp.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1hp.Name = "P1hp";
@@ -256,6 +260,7 @@
             // 
             // P1dmg
             // 
+            this.P1dmg.Enabled = false;
             this.P1dmg.Location = new System.Drawing.Point(57, 55);
             this.P1dmg.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1dmg.Name = "P1dmg";
@@ -264,6 +269,7 @@
             // 
             // P1armor
             // 
+            this.P1armor.Enabled = false;
             this.P1armor.Location = new System.Drawing.Point(57, 81);
             this.P1armor.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1armor.Name = "P1armor";
@@ -272,6 +278,7 @@
             // 
             // P1Spd
             // 
+            this.P1Spd.Enabled = false;
             this.P1Spd.Location = new System.Drawing.Point(57, 107);
             this.P1Spd.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1Spd.Name = "P1Spd";
@@ -280,6 +287,7 @@
             // 
             // P1lvl
             // 
+            this.P1lvl.Enabled = false;
             this.P1lvl.Location = new System.Drawing.Point(57, 133);
             this.P1lvl.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1lvl.Name = "P1lvl";
@@ -476,12 +484,23 @@
             this.label18.TabIndex = 47;
             this.label18.Text = "Level";
             // 
+            // NewGame
+            // 
+            this.NewGame.Location = new System.Drawing.Point(577, 266);
+            this.NewGame.Name = "NewGame";
+            this.NewGame.Size = new System.Drawing.Size(75, 23);
+            this.NewGame.TabIndex = 48;
+            this.NewGame.Text = "New Game";
+            this.NewGame.UseVisualStyleBackColor = true;
+            this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(999, 512);
+            this.Controls.Add(this.NewGame);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -583,5 +602,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button NewGame;
     }
 }
