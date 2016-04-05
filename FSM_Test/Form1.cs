@@ -84,20 +84,20 @@ namespace FSM_Test
         {
             List<Unit> pObjects = new List<Unit>();
 
-            Unit Jittery = new Unit("Jittery",100,10,15,5,0,"Player");
-            Unit Ryyul = new Unit("Ryyul",100,9,10,4,0,"Player");
-            Unit Sneaky = new Unit("Sneaky", 100, 9,10, 5, 0, "Player");
-            Unit Rory = new Unit("Rory", 100, 8,10, 5, 0, "Player");
-            Unit Yato = new Unit("Yato", 100, 10,10, 5, 0, "Player");
-            Unit Meteos = new Unit("Meteos", 100, 9,10, 4, 0, "Player");
+            Unit Jittery = new Unit("Jittery",100,15,25,5,0,"Player");
+            Unit Ryyul = new Unit("Ryyul",100,9,25,4,0,"Player");
+            Unit Sneaky = new Unit("Sneaky", 100, 25,10, 5, 0, "Player");
+            Unit Rory = new Unit("Rory", 100, 8,25, 5, 0, "Player");
+            Unit Yato = new Unit("Yato", 100, 10,25, 5, 0, "Player");
+            Unit Meteos = new Unit("Meteos", 100, 9,25, 4, 0, "Player");
         
 
-            Unit Savor = new Unit("Savor",100,5, 5,4,0,"Enemy");
-            Unit Friv = new Unit("Friv",99,6,10,4,0,"Enemy");
-            Unit Atoli = new Unit("Atoli",100,7,6,4,0,"Enemy");
-            Unit Violet = new Unit("Violet",98,5,5,5,0,"Enemy");
-            Unit Muur = new Unit("Savor", 100, 5,6, 4, 0, "Enemy");
-            Unit Loki = new Unit("Friv", 99, 6,4, 4, 0, "Enemy");
+            Unit Savor = new Unit("Savor",100,5, 5,4,50,"Enemy");
+            Unit Friv = new Unit("Friv",125,6,10,4,50,"Enemy");
+            Unit Atoli = new Unit("Atoli",100,7,6,4,50,"Enemy");
+            Unit Violet = new Unit("Violet",98,5,5,5,50,"Enemy");
+            Unit Muur = new Unit("Savor", 100, 5,6, 4, 100, "Enemy");
+            Unit Loki = new Unit("Friv", 100, 6,4, 4, 25, "Enemy");
            
             //Adds Player Unit Objects
             pObjects.Add(Jittery);
