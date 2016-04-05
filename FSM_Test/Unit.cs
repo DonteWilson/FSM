@@ -7,24 +7,36 @@ using System.Threading.Tasks;
 [Serializable]
 public class Unit : IStats, IAbilities<Unit> 
 {
-    [NonSerialized]public string stuff;
+    //Stores combat text
+    public string stuff;
+    //Level Int
     private int m_uLvl;
+    //Armor int
     private int m_uArmor;
+    //XP Int
     private int m_uXP;
+    //Dmg Int
     private int m_uDmg;
     private string m_uType;
+    //creates a member list
     private List<Unit> m_member = new List<Unit>();
     private Unit m_uTarget;
+    //Bool seeing if target is alive
     private bool m_uLife;
+    //Max HP int
     private int m_uMHP;
+    //HP int
     private int m_uHP;
+    //Speed Int
     private int m_uSpd;
+    //String Name
     public string m_uName;
-
+    //Default Constructor
     public Unit()
     {
 
     }
+    //Unit class that stores Name, HP, Armor, DMG, Spd, XP, Type
     public Unit(string name, int HP, int Armor,int dmg, int Spd, int XP, string type)
     {
         m_uName = name;
@@ -37,7 +49,7 @@ public class Unit : IStats, IAbilities<Unit>
         m_uLvl = 1;
     }
 
-
+    //String name property
     public string Name
     {
         get
@@ -49,6 +61,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uName = value;
         }
     }
+    //MHP int property
     public int MHP
     {
         get
@@ -60,6 +73,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uMHP = value;
         }
     }
+    //Dmg int property
     public int Dmg
     {
         get
@@ -71,6 +85,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uDmg = value;
         }
     }
+    //Spd int property
     public int Spd
     {
         get
@@ -82,6 +97,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uSpd = value;
         }
     }
+    //Level int property
     public int Lvl
     {
         get
@@ -117,6 +133,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uTarget = value;
         }
     }
+    //Health int property
     public int HP
     {
         get
@@ -128,6 +145,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uHP = value;
         }
     }
+    ////Upgrade int property
     public int Upgrade
     {
         get
@@ -139,6 +157,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uLvl = value;
         }
     }
+    //Armor int property
     public int Armor
     {
         get
@@ -150,6 +169,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uArmor = value;
         }
     }
+    //Experience Property
     public int XP
     {
         get
@@ -161,6 +181,7 @@ public class Unit : IStats, IAbilities<Unit>
             m_uXP = value;
         }
     }
+    //String type property
     public string Type
     {
         get
@@ -181,16 +202,19 @@ public class Unit : IStats, IAbilities<Unit>
 
         if (u.HP > 0)
         {
-            float avg = u.Armor * 0.25f;
+            //Takes off a certain amount of damage based on armor
+            float deflect = u.Armor * 0.25f;
             u.HP -= Dmg;
             stuff = this.Name + " is in Combat " + u.Name + "\n";
             stuff += u.Name + "took" + Dmg + "damage!\n";
+            //returns true
             return true; 
         }
         else
         {
             Console.WriteLine(u.Name + "has been defeated");
             this.XP += u.XP;
+            //return false
             return false;
         }
 
@@ -205,6 +229,28 @@ public class Unit : IStats, IAbilities<Unit>
         {
             m_member = value;
         }
+    }
+    //Function used for a enemy targeting player
+    public Unit encounter(List<Unit> party)
+    {
+        //Creates Instance of Random Object
+        Random r = new Random();
+
+        int index = r.Next(0, party.Count);
+        //stores unit as a party index
+        Unit victim = party[index];
+        //If victim life true
+        if (victim.Life)
+        {
+            //return victim
+            return victim;
+        }
+        else
+        {
+
+        }
+        //return null if dead
+        return null;
     }
     //Indicate she enemies hp and checks to see if dead or alive.
     //public Unit Indicator(List<Unit> EP)
@@ -232,9 +278,14 @@ public class Unit : IStats, IAbilities<Unit>
     //        }
     //    }
     //    return Target;
+    //Leveling Algortihm
     public void LvlUP()
     {
-        if(this.XP == 50)
+        //Leveling system similar to borderlands 
+        //Takes Current Lvl and times it by 50, so eacch time the player levels the amount of XP
+        //needed for next lvl is increased by 50
+        int XPCAP = this.Lvl * 50;
+        if(this.XP >= XPCAP)
         {
             stuff += "\n" + this.Name + "Leveled Up!\n";
             this.Lvl++;
@@ -244,20 +295,5 @@ public class Unit : IStats, IAbilities<Unit>
             this.Spd += 2;
         }
     }
-    public Unit encounter(List<Unit> party)
-    {
-        Random r = new Random();
-
-        int index = r.Next(0, party.Count);
-        Unit victim = party[index];
-        if(victim.Life)
-        {
-            return victim;
-        }
-        else
-        {
-
-        }
-        return null;
-    }
+ 
 }
