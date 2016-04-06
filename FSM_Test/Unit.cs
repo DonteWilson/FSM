@@ -243,9 +243,9 @@ public class Unit : IStats, IAbilities<Unit>
     public void LvlUP()
     {
         //Leveling system similar to borderlands 
-        //Takes Current Lvl and times it by 50, so eacch time the player levels the amount of XP
-        //needed for next lvl is increased by 50
-        int XPCAP = this.Lvl * 50;
+        //Takes Current Lvl and times it by 100, so eacch time the player levels the amount of XP
+        //needed for next lvl is increased by 100
+        int XPCAP = this.Lvl * 100;
         if(this.XP >= XPCAP)
         {
             stuff += "\n" + this.Name + "Leveled Up!\n";
