@@ -30,7 +30,7 @@ Everything is pretty self explained on the window forms app. Some parts of the p
 
 Ending Statement
 -----------------------
-I hope you enjoyed my version of The Wumpus World and explored the features held inside. This program was coded and ran in “Visual Studios 2015”. I recieved an error in my Window Forms that 
+This program was coded and ran in “Visual Studios 2015”. I recieved an error in my Window Forms that 
 prevented most of my application to work. I'm working on trying to fix the error, so that it can be viewed correctly.
 
 If you find a problem within the code, please contact me in person or by email.
