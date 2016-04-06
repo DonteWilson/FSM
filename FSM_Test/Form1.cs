@@ -148,106 +148,108 @@ namespace FSM_Test
             BattleGroup.RemoveRange(0, BattleGroup.Count);
             //creates a random class out of 3 possibilities
             Random r = new Random();
-
-            //Calls the next function to grab a random group of 3 members
-            int p1 = r.Next(0, p.Count - 1);
-            int p2 = r.Next(0, p.Count - 1);
-            int p3 = r.Next(0, p.Count - 1);
-            //goes through different players
-            while (p1 == p2)
+            if (p.Count > 0)
             {
-                p2 = r.Next(0, p.Count - 1);
-            }
-            //goes through different players
-            while(p1 == p3)
-            {
-                p3 = r.Next(0, p.Count - 1);
-            }
-
-            if (p1 != p2 && p1 != p3)
-            {
-                P1NBox.Text = p[p1].Name;
-                p1name = p[p1].Name;
-                P1hp.Text = p[p1].HP.ToString();
-                P1dmg.Text = p[p1].HP.ToString();
-                P1armor.Text = p[p1].Armor.ToString();
-                P1lvl.Text = p[p1].Lvl.ToString();
-                BattleGroup.Add(p[p1]);
-            }
-            
-            while(p2 == p1)
-            {
-                p2 = r.Next(0, p.Count - 1);
-            }
-
-            while(p2 == p3)
-            {
-                p3 = r.Next(0, p.Count - 1);
-            }
-
-            if (p2 != p3 && p2 != p1)
-            {
-                P2NBox.Text = p[p2].Name;
-                p2name = p[p2].Name;
-                P2hp.Text = p[p2].HP.ToString();
-                P2dmg.Text = p[p2].Dmg.ToString();
-                P2armor.Text = p[p2].Armor.ToString();
-                P2lvl.Text = p[p2].Lvl.ToString();
-                BattleGroup.Add(p[p2]);
-            }
-            
-            while(p3 == p1)
-            {
-                p3 = r.Next(0, p.Count - 1);
-                
-                while (p3 == p2)
+                //Calls the next function to grab a random group of 3 members
+                int p1 = r.Next(0, p.Count - 1);
+                int p2 = r.Next(0, p.Count - 1);
+                int p3 = r.Next(0, p.Count - 1);
+                //goes through different players
+                while (p1 == p2)
+                {
+                    p2 = r.Next(0, p.Count - 1);
+                }
+                //goes through different players
+                while (p1 == p3)
                 {
                     p3 = r.Next(0, p.Count - 1);
-                }                  
-            }
+                }
 
-            if (p3 != p2 && p3 != p1)
-            {
-                P3NBox.Text = p[p3].Name;
-                p3name = p[p3].Name;
-                P3hp.Text = p[p3].HP.ToString();
-                P3dmg.Text = p[p3].Dmg.ToString();
-                P3armor.Text = p[p3].Armor.ToString();
-                P3lvl.Text = p[p3].Lvl.ToString();
-                BattleGroup.Add(p[p3]);
+                if (p1 != p2 && p1 != p3)
+                {
+                    P1NBox.Text = p[p1].Name;
+                    p1name = p[p1].Name;
+                    P1hp.Text = p[p1].HP.ToString();
+                    P1dmg.Text = p[p1].HP.ToString();
+                    P1armor.Text = p[p1].Armor.ToString();
+                    P1lvl.Text = p[p1].Lvl.ToString();
+                    BattleGroup.Add(p[p1]);
+                }
 
-            }
-            CharIcon(BattleGroup);
+                while (p2 == p1)
+                {
+                    p2 = r.Next(0, p.Count - 1);
+                }
 
-            Random a = new Random();
+                while (p2 == p3)
+                {
+                    p3 = r.Next(0, p.Count - 1);
+                }
 
-            int e1 = a.Next(0, e.Count);
-            int e2 = a.Next(0, e.Count);
-            int e3 = a.Next(0, e.Count);
+                if (p2 != p3 && p2 != p1)
+                {
+                    P2NBox.Text = p[p2].Name;
+                    p2name = p[p2].Name;
+                    P2hp.Text = p[p2].HP.ToString();
+                    P2dmg.Text = p[p2].Dmg.ToString();
+                    P2armor.Text = p[p2].Armor.ToString();
+                    P2lvl.Text = p[p2].Lvl.ToString();
+                    BattleGroup.Add(p[p2]);
+                }
 
-            while(e1 == e2)
-            {
-                e2 = a.Next(0, e.Count - 1);
-            }
-            while(e2 == e3)
-            {
-                e3 = a.Next(0, e.Count - 1);
-            }
-            while(e3 == e1)
-            {
-                e1 = a.Next(0, e.Count - 1);
+                while (p3 == p1)
+                {
+                    p3 = r.Next(0, p.Count - 1);
+
+                    while (p3 == p2)
+                    {
+                        p3 = r.Next(0, p.Count - 1);
+                    }
+                }
+
+                if (p3 != p2 && p3 != p1)
+                {
+                    P3NBox.Text = p[p3].Name;
+                    p3name = p[p3].Name;
+                    P3hp.Text = p[p3].HP.ToString();
+                    P3dmg.Text = p[p3].Dmg.ToString();
+                    P3armor.Text = p[p3].Armor.ToString();
+                    P3lvl.Text = p[p3].Lvl.ToString();
+                    BattleGroup.Add(p[p3]);
+
+                }
+                CharIcon(BattleGroup);
+
+                Random a = new Random();
+
+                int e1 = a.Next(0, e.Count);
+                int e2 = a.Next(0, e.Count);
+                int e3 = a.Next(0, e.Count);
 
                 while (e1 == e2)
                 {
-                    e1 = a.Next(0, e.Count - 1);
+                    e2 = a.Next(0, e.Count - 1);
                 }
+                while (e2 == e3)
+                {
+                    e3 = a.Next(0, e.Count - 1);
+                }
+                while (e3 == e1)
+                {
+                    e1 = a.Next(0, e.Count - 1);
+
+                    while (e1 == e2)
+                    {
+                        e1 = a.Next(0, e.Count - 1);
+                    }
+                }
+
+                BattleGroup.Add(e[e1]);
+                BattleGroup.Add(e[e2]);
+                BattleGroup.Add(e[e3]);
+
+
             }
-
-            BattleGroup.Add(e[e1]);
-            BattleGroup.Add(e[e2]);
-            BattleGroup.Add(e[e3]);
-
-
         }
         //Loads form 1 FSM states, along with delegates.
         private void Form1_Load_1(object sender, EventArgs e)

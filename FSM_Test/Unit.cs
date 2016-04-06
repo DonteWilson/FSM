@@ -43,6 +43,7 @@ public class Unit : IStats, IAbilities<Unit>
         m_uDmg = dmg;
         m_uSpd = Spd;
         m_uXP = XP;
+        m_uType = type;
         m_uLife = true;
         m_uLvl = 1;
     }
