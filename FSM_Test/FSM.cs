@@ -105,15 +105,16 @@ public enum i_STATES
     {
         if(typeof(T).IsEnum)
         {
+            //loops through different enums
             foreach (T states in Enum.GetValues(typeof(T)))
             {
                 State state = new State(states as Enum, null);
-
+                //adds state to list
                 _states.Add(state);
-
+                //adds state to dictionary
                 Trans.Add(state.name, new List<Transition>());
             }
-
+            //changes current state the the first state
             cState = _states[0];
         }
         else
@@ -123,21 +124,23 @@ public enum i_STATES
     }
     public bool NewTransition<V>(T from, T to, V input)
     {
+        //typecast from
         Enum f = from as Enum;
-
+        //typecast to
         Enum t = to as Enum;
-
+        //creates a new instance
         State focus = new State();
-
+        //loops through states
         foreach (State s in _states)
         {
             if(s.name.ToString() == t.ToString())
             {
                 focus = s;
-
+                //breaks out of loop
                 break;
             }
         }
+        //checks to see if dictionary contains key
         if (Trans.ContainsKey(f))
         {
             Transition transition = new Transition(input.ToString(), focus);
