@@ -313,78 +313,78 @@ namespace FSM_Test
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            //Disables NewGame button
-            NewGame.Enabled = false;
-            //Create a new OpenFileDialog 
-            OpenFileDialog LoadWindow = new OpenFileDialog();
-            //Set a directory as a string to a string variable
-            string path = @"..\Game Saves";
-            //This allows multiselect for the user
-            LoadWindow.Multiselect = true;
-            //If the initial directory is not equal to the path variable
-            if (LoadWindow.InitialDirectory != path)
-            {//Set the directory to the path variable
-                LoadWindow.InitialDirectory = path;
-            }
-            //Set file type choices to appear
-            LoadWindow.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            //Sets filter selected
-            LoadWindow.FilterIndex = 2;
-            //Set the current form to not be visible
-            Visible = false;
-            //Create an instance of a new party
-            Party EnemyE = new Party();
-            //Create an instance of a new party
-            Party PlayerP = new Party();
+            ////Disables NewGame button
+            //NewGame.Enabled = false;
+            ////Create a new OpenFileDialog 
+            //OpenFileDialog LoadWindow = new OpenFileDialog();
+            ////Set a directory as a string to a string variable
+            //string path = @"..\Game Saves";
+            ////This allows multiselect for the user
+            //LoadWindow.Multiselect = true;
+            ////If the initial directory is not equal to the path variable
+            //if (LoadWindow.InitialDirectory != path)
+            //{//Set the directory to the path variable
+            //    LoadWindow.InitialDirectory = path;
+            //}
+            ////Set file type choices to appear
+            //LoadWindow.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ////Sets filter selected
+            //LoadWindow.FilterIndex = 2;
+            ////Set the current form to not be visible
+            //Visible = false;
+            ////Create an instance of a new party
+            //Party EnemyE = new Party();
+            ////Create an instance of a new party
+            //Party PlayerP = new Party();
 
-            //If the ok button is clicked
-            if (LoadWindow.ShowDialog() == DialogResult.OK)
-            {//Deserilalize the designated file name as a party object and store it into the PlayerP variable
-                PlayerP = _Save.Deserialize<Party>(@"..\Game Saves\PartyData.xml");
-                //Set the player1name to the given index of the PlayerP.unit
-                p1name = PlayerP.units[0].Name;
-                //Set the player2name to the given index of the PlayerP.unit
-                p2name = PlayerP.units[1].Name;
-                //Set the player3name to the given index of the PlayerP.unit
-                p3name = PlayerP.units[2].Name;
+            ////If the ok button is clicked
+            //if (LoadWindow.ShowDialog() == DialogResult.OK)
+            //{//Deserilalize the designated file name as a party object and store it into the PlayerP variable
+            //    PlayerP = _Save.Deserialize<Party>(@"..\Game Saves\PartyData.xml");
+            //    //Set the player1name to the given index of the PlayerP.unit
+            //    p1name = PlayerP.units[0].Name;
+            //    //Set the player2name to the given index of the PlayerP.unit
+            //    p2name = PlayerP.units[1].Name;
+            //    //Set the player3name to the given index of the PlayerP.unit
+            //    p3name = PlayerP.units[2].Name;
 
-                //Add the new units to the BattleReadyParty List
-                BattleGroup.Add(PlayerP.units[0]);
-                BattleGroup.Add(PlayerP.units[1]);
-                BattleGroup.Add(PlayerP.units[2]);
+            //    //Add the new units to the BattleReadyParty List
+            //    BattleGroup.Add(PlayerP.units[0]);
+            //    BattleGroup.Add(PlayerP.units[1]);
+            //    BattleGroup.Add(PlayerP.units[2]);
 
-                //Deserilalize the designated file name as a party object and store it into the EnemyE variable
-                EnemyE = _Save.Deserialize<Party>(@"..\Game Saves\EnemyParty.xml");
-                //Set the enemy1name to the given index of the EnemyE.unit
-                e1name = EnemyE.units[0].Name;
-                //Set the enemy1name to the given index of the EnemyE.unit
-                e2name = EnemyE.units[1].Name;
-                //Set the enemy1name to the given index of the EnemyE.unit
-                e3name = EnemyE.units[2].Name;
+            //    //Deserilalize the designated file name as a party object and store it into the EnemyE variable
+            //    EnemyE = _Save.Deserialize<Party>(@"..\Game Saves\EnemyParty.xml");
+            //    //Set the enemy1name to the given index of the EnemyE.unit
+            //    e1name = EnemyE.units[0].Name;
+            //    //Set the enemy1name to the given index of the EnemyE.unit
+            //    e2name = EnemyE.units[1].Name;
+            //    //Set the enemy1name to the given index of the EnemyE.unit
+            //    e3name = EnemyE.units[2].Name;
 
-                //Add the units loaded onto the battle group list
-                BattleGroup.Add(EnemyE.units[0]);
-                BattleGroup.Add(EnemyE.units[1]);
-                BattleGroup.Add(EnemyE.units[2]);
+            //    //Add the units loaded onto the battle group list
+            //    BattleGroup.Add(EnemyE.units[0]);
+            //    BattleGroup.Add(EnemyE.units[1]);
+            //    BattleGroup.Add(EnemyE.units[2]);
 
-                //Deserilalize the designated file name as an int object and store it into the currentUnitIndex variable
-                UnitIndex = _Save.Deserialize<int>(@"..\Game Saves\Turn.xml");
+            //    //Deserilalize the designated file name as an int object and store it into the currentUnitIndex variable
+            //    UnitIndex = _Save.Deserialize<int>(@"..\Game Saves\Turn.xml");
 
-                //Deserilalize the designated file name as a string object and store it into the deserializedState variable
-                dState = _Save.Deserialize<string>(@"..\Game Saves\GameData.xml");
+            //    //Deserilalize the designated file name as a string object and store it into the deserializedState variable
+            //    dState = _Save.Deserialize<string>(@"..\Game Saves\GameData.xml");
 
-                //Calls the function to display game
-                Arena.DisplayG();
-                //Shows dialog for Arena
-                Arena.ShowDialog();
-            }
-            //If the ok button is not clicked
-            else
-            {//Enable to the New Game Button
-                NewGame.Enabled = true;
-                //Allow the form to be visible
-                Visible = true;
-            }
+            //    //Calls the function to display game
+            //    Arena.DisplayG();
+            //    //Shows dialog for Arena
+            //    Arena.ShowDialog();
+            //}
+            ////If the ok button is not clicked
+            //else
+            //{//Enable to the New Game Button
+            //    NewGame.Enabled = true;
+            //    //Allow the form to be visible
+            //    Visible = true;
+            //}
 
 
 
