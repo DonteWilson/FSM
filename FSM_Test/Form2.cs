@@ -12,8 +12,7 @@ using System.Windows.Forms;
 namespace FSM_Test
 {
     public partial class Form2 : Form
-    {//Creates instance of I/O. Save Data
-        IO _Save = new IO();
+    {
         //Int to show the current index of a list
         int index;
         //Compare the index to
@@ -112,8 +111,6 @@ namespace FSM_Test
 
                 foreach (Unit u in party.units)
                 {
-                    //resets units hp
-                    u.HP = u.MHP;
                     //sets units life to true
                     u.Life = true;
                 }
@@ -164,7 +161,6 @@ namespace FSM_Test
 
                 foreach (Unit u in party.units)
                 {
-                    u.HP = u.MHP;
 
                     u.Life = true;
                 }
@@ -214,8 +210,6 @@ namespace FSM_Test
 
                 foreach (Unit u in party.units)
                 {
-                    //resets hp
-                    u.HP = u.MHP;
                     //sets units life to true
                     u.Life = true;
                 }
@@ -380,8 +374,6 @@ namespace FSM_Test
 
                 foreach (Unit u in party.units)
                 {
-                    u.HP = u.MHP;
-
                     u.Life = true;
                 }
                 refer.Control.stats = "";
@@ -686,18 +678,6 @@ namespace FSM_Test
             p.units = Eparty;
 
             E = refer.Control.FSM.cState.name;
-            //Saves current fsm state
-            _Save.Serialize("GameData", E.ToString());
-            //Saves CurrentTurn
-            _Save.Serialize("Turn", number);
-            //saves data on enemy party
-            _Save.Serialize("EnemyInfo", w);
-            //Saves party information
-            _Save.Serialize("CurrentParty", p);
-            MessageBox.Show("Saved Successfully","Saved", MessageBoxButtons.OK);
-
-
-
         }
     }
 }

@@ -23,8 +23,6 @@ public class Unit : IStats, IAbilities<Unit>
     private Unit m_uTarget;
     //Bool seeing if target is alive
     private bool m_uLife;
-    //Max HP int
-    private int m_uMHP;
     //HP int
     private int m_uHP;
     //Speed Int
@@ -59,18 +57,6 @@ public class Unit : IStats, IAbilities<Unit>
         set
         {
             m_uName = value;
-        }
-    }
-    //MHP int property
-    public int MHP
-    {
-        get
-        {
-            return m_uMHP;
-        }
-        set
-        {
-            m_uMHP = value;
         }
     }
     //Dmg int property
@@ -252,33 +238,8 @@ public class Unit : IStats, IAbilities<Unit>
         //return null if dead
         return null;
     }
-    //Indicate she enemies hp and checks to see if dead or alive.
-    //public Unit Indicator(List<Unit> EP)
-    //{
-    //    string Input;
-
-    //    Console.WriteLine("Chose a target: \n");
-    //    for (int i = 0; i < EP.Count; i ++)
-    //    {
-    //        Console.WriteLine(EP.ElementAt(i).Name);
-    //    }
-
-    //    Input = Console.ReadLine();
-    //    for (int i = 0; i < EP.Count; i++)
-    //    {
-    //        if (Input == EP.ElementAt(i).Name && EP.ElementAt(i).Life == true)
-    //        {
-    //            Target = EP.ElementAt(i);
-    //        }
-    //        else if (Input == EP.ElementAt(i).Name && EP.ElementAt(i).Life == false)
-    //        {
-    //            //Has Detected that the target is dead.
-    //            Console.WriteLine(EP.ElementAt(i).Name + "Target is Dead\n");
-    //            Indicator(EP);
-    //        }
-    //    }
-    //    return Target;
     //Leveling Algortihm
+    //Similar to borderlands
     public void LvlUP()
     {
         //Leveling system similar to borderlands 

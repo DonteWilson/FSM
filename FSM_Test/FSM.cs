@@ -4,7 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //Controls Functions
-public delegate void Ctrl();
+//Enum for game states
+public enum i_STATES
+{
+    INIT,
+    START,
+    LOCATE,
+    FIGHT,
+    PTURN,
+    ETURN,
+    EXIT
+}
 
 [Serializable]
 //Creates States for object
@@ -12,8 +22,6 @@ public delegate void Ctrl();
  {
     //states Enum name
         public Enum name;
-    //Delegate for storing functions
-        public Delegate d;
     //Constructor for states
         public State()
         {
@@ -25,24 +33,8 @@ public delegate void Ctrl();
             //string name turns in current state
             name = CState;
             //Delegate equals Ctrl State
-            d = TCtrl;
+           
         }
-
-        public bool Ctrl()
-        {
-            if (d != null)
-            {
-                Ctrl c;
-
-                c = d as Ctrl;
-                //Calls the delegate and begins functions
-                c();
-                //returns true
-                return true;                    
-            }
-            //returns false
-            return false;
-        }     
     }
 //class representing transitions on an object
     public class Transition
@@ -101,7 +93,6 @@ public delegate void Ctrl();
             {
                 cState = t.focus;
                 //Activates the current state of the function
-                cState.Ctrl();
                 //returns true
                 return true;
             }
@@ -160,7 +151,7 @@ public delegate void Ctrl();
         //returns true
         return true;
     }
-    public bool State(T ss, Delegate del)
+    public bool State(T ss)
     {
         Enum nState = ss as Enum;
         //Creates and instance of a new state object
@@ -175,7 +166,6 @@ public delegate void Ctrl();
                 break;
             }
         }
-        newState.d = del;
         //returns true
         return true;
     }

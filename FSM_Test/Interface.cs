@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 //Contains a bool to check the actions of a Player/Enemy
-//Public interface for abilities
+//Public interface for abilities 
 public interface IAbilities<T>
 {
     bool Combat(T u);
@@ -26,8 +26,6 @@ public interface IStats
     int XP { get; set; }
     //Health Property
     int HP { get; set; }
-    //Max Health Property
-    int MHP { get; set; }
     string Type { get; set; }
     //Name Property
     string Name { get; set; }
