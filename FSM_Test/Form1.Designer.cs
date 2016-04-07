@@ -121,10 +121,10 @@
             // P2NBox
             // 
             this.P2NBox.Enabled = false;
-            this.P2NBox.Location = new System.Drawing.Point(57, 295);
+            this.P2NBox.Location = new System.Drawing.Point(48, 295);
             this.P2NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2NBox.Name = "P2NBox";
-            this.P2NBox.Size = new System.Drawing.Size(29, 20);
+            this.P2NBox.Size = new System.Drawing.Size(38, 20);
             this.P2NBox.TabIndex = 8;
             // 
             // P2hp
@@ -158,10 +158,10 @@
             // P3NBox
             // 
             this.P3NBox.Enabled = false;
-            this.P3NBox.Location = new System.Drawing.Point(327, 2);
+            this.P3NBox.Location = new System.Drawing.Point(315, 2);
             this.P3NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P3NBox.Name = "P3NBox";
-            this.P3NBox.Size = new System.Drawing.Size(29, 20);
+            this.P3NBox.Size = new System.Drawing.Size(41, 20);
             this.P3NBox.TabIndex = 12;
             this.P3NBox.TextChanged += new System.EventHandler(this.P3NBox_TextChanged);
             // 
@@ -230,8 +230,8 @@
             this.P2lvl.TabIndex = 19;
             // 
             // P2dmg
-            //
-            this.P2dmg.Enabled = false; 
+            // 
+            this.P2dmg.Enabled = false;
             this.P2dmg.Location = new System.Drawing.Point(57, 347);
             this.P2dmg.MaximumSize = new System.Drawing.Size(100, 20);
             this.P2dmg.Name = "P2dmg";
@@ -241,11 +241,11 @@
             // P1NBox
             // 
             this.P1NBox.Enabled = false;
-            this.P1NBox.Location = new System.Drawing.Point(57, 3);
+            this.P1NBox.Location = new System.Drawing.Point(48, 3);
             this.P1NBox.MaximumSize = new System.Drawing.Size(100, 20);
             this.P1NBox.Name = "P1NBox";
             this.P1NBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.P1NBox.Size = new System.Drawing.Size(29, 20);
+            this.P1NBox.Size = new System.Drawing.Size(38, 20);
             this.P1NBox.TabIndex = 21;
             this.P1NBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -325,7 +325,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(7, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 30;
@@ -379,7 +379,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 300);
+            this.label7.Location = new System.Drawing.Point(12, 300);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 36;
@@ -388,7 +388,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 329);
+            this.label8.Location = new System.Drawing.Point(9, 329);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 37;
@@ -433,7 +433,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(287, 9);
+            this.label13.Location = new System.Drawing.Point(274, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 42;

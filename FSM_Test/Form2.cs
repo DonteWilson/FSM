@@ -83,51 +83,55 @@ namespace FSM_Test
         private void Attack1_Click(object sender, EventArgs e)
         {
             //changes current members in party to variables
-            Unit a = refer.u.member[index];
-
-            if(Eparty[0].Life == true)
+            if (index > 0)
             {
-                a.Combat(Eparty[0]);
-                CombatT.Text = a.stuff;
-                //checks to see what index count equals
-                if(index == count)
+                Unit a = refer.u.member[index];
+              
+
+                if (Eparty[0].Life == true)
                 {
-                    index = 0;
+                    a.Combat(Eparty[0]);
+                    CombatT.Text = a.stuff;
+                    //checks to see what index count equals
+                    if (index == count)
+                    {
+                        index = 0;
+                    }
+                    // increase index by 1
+                    else
+                    {
+                        index += 1;
+                    }
                 }
-                // increase index by 1
-                else
+                if (refer.Control.Victorious(Party, Eparty) == true)
                 {
-                    index += 1;
+                    //cahnges combat text to equal victorious text
+                    CombatT.Text += refer.Control.winText;
+
+                    Party party = new FSM_Test.Party();
+
+                    party.units = Party;
+
+                    foreach (Unit u in party.units)
+                    {
+                        //sets units life to true
+                        u.Life = true;
+                    }
+                    refer.Control.stats = "";
+                    refer.Control.Objectstats(refer.u.member);
+                    OStats.Text = refer.Control.stats;
+                    //disables Attack enemy 1 button 
+                    Attack1.Enabled = false;
+                    //disables Attack enemy 2 button
+                    Attack2.Enabled = false;
+                    //disables Attack enemy 3 button
+                    Attack3.Enabled = false;
+                    //Changes current state text to equal current fsm state
+                    CState.Text = refer.Control.FSM.cState.name.ToString();
                 }
+                //Calls the engagement function
+                Engagement(index);
             }
-            if (refer.Control.Victorious(Party, Eparty) == true)
-            {
-                //cahnges combat text to equal victorious text
-                CombatT.Text += refer.Control.winText;
-
-                Party party = new FSM_Test.Party();
-
-                party.units = Party;
-
-                foreach (Unit u in party.units)
-                {
-                    //sets units life to true
-                    u.Life = true;
-                }
-                refer.Control.stats = "";
-                refer.Control.Objectstats(refer.u.member);
-                OStats.Text = refer.Control.stats;
-                //disables Attack enemy 1 button 
-                Attack1.Enabled = false;
-                //disables Attack enemy 2 button
-                Attack2.Enabled = false;
-                //disables Attack enemy 3 button
-                Attack3.Enabled = false;
-                //Changes current state text to equal current fsm state
-                CState.Text = refer.Control.FSM.cState.name.ToString();
-            }
-            //Calls the engagement function
-            Engagement(index);
 
         }
 

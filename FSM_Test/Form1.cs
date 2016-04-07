@@ -172,6 +172,7 @@ namespace FSM_Test
                     P1hp.Text = p[p1].HP.ToString();
                     P1dmg.Text = p[p1].HP.ToString();
                     P1armor.Text = p[p1].Armor.ToString();
+                    P1Spd.Text = p[p1].Spd.ToString();
                     P1lvl.Text = p[p1].Lvl.ToString();
                     BattleGroup.Add(p[p1]);
                 }
@@ -193,6 +194,7 @@ namespace FSM_Test
                     P2hp.Text = p[p2].HP.ToString();
                     P2dmg.Text = p[p2].Dmg.ToString();
                     P2armor.Text = p[p2].Armor.ToString();
+                    P2Spd.Text = p[p1].Spd.ToString();
                     P2lvl.Text = p[p2].Lvl.ToString();
                     BattleGroup.Add(p[p2]);
                 }
@@ -214,6 +216,7 @@ namespace FSM_Test
                     P3hp.Text = p[p3].HP.ToString();
                     P3dmg.Text = p[p3].Dmg.ToString();
                     P3armor.Text = p[p3].Armor.ToString();
+                    P3Spd.Text = p[p3].Spd.ToString();
                     P3lvl.Text = p[p3].Lvl.ToString();
                     BattleGroup.Add(p[p3]);
 
