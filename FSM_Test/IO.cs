@@ -14,25 +14,24 @@ namespace FSM_Test
     {
         public void SerializeGameData<T>(string s, T t, string path)
         {
-            if (Directory.Exists(path))
+            using (FileStream fs = File.Create(path + s + ".xml"))
             {
-                using (FileStream fs = File.Create(path + @"..\PartySave\" + s + ".xml"))
-                {
-                    XmlSerializer Serial = new XmlSerializer(typeof(T));
-                    Serial.Serialize(fs, t);
+                XmlSerializer Serial = new XmlSerializer(typeof(T));
+                Serial.Serialize(fs, t);
 
-                    fs.Close();
-                }
+                fs.Close();
             }
         }
         //Deserializes data from path
         public T DeserializeGameData<T>(string s)
         {
+            XmlSerializer Deserial = new XmlSerializer(typeof(T));
+
             T t;
 
-            using (FileStream fs = File.OpenRead(s + ".xml"))
+            using (FileStream fs = File.OpenRead(s))
             {
-                XmlSerializer Deserial = new XmlSerializer(typeof(T));
+                
                 t = (T)Deserial.Deserialize(fs);
                 fs.Close();
             }

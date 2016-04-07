@@ -16,9 +16,10 @@ namespace FSM_Test
     public partial class Form1 : Form
     {
         //Creates
-       // IO _Save = new IO();
+       IO _Save = new IO();
 
         Form2 Arena;
+        private PartyData PartySave;
         //Creates a singleton to the control panel as a public reference.
         public ControlPanel Control = ControlPanel.instance;
         public Unit u = new Unit();
@@ -44,6 +45,14 @@ namespace FSM_Test
         public string e2name;
         //enemy 3 name
         public string e3name;
+        
+        //SaveName = name;
+        //        SaveHP = HP;
+        //        SaveArmor = Armor;
+        //        SaveDmg = dmg;
+        //        SaveSpd = Spd;
+        //        SaveXP = XP;
+        //        SaveType = type;
         //public constructor for form1
         public Form1()
         {
@@ -139,6 +148,38 @@ namespace FSM_Test
                 }
                 
             }
+        }
+
+        [Serializable]
+        public class PartyData
+        {
+            public PartyData()
+            {
+               
+            }
+            public PartyData(string name, int HP, int Armor, int dmg, int Spd, int XP, string type)
+            {
+                SaveName = name;
+                SaveHP = HP;
+                SaveArmor = Armor;
+                SaveDmg = dmg;
+                SaveSpd = Spd;
+                SaveXP = XP;
+                SaveType = type;
+            }
+            //saves name
+            public string SaveName;
+            public int SaveHP;
+            //saves xP
+            public int SaveXP;
+            //saves Damage
+            public int SaveDmg;
+            //saves Speed
+            public int SaveSpd;
+            //saves Armor
+            public int SaveArmor;
+            //saves type
+            public string SaveType;
         }
 
         //Looks through players and generates a random party of 3.
@@ -295,22 +336,99 @@ namespace FSM_Test
         //Saves current party.
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Party party = new Party();
+            Party a = new Party();
 
-            //perform this action for each object in battlegroup list
-            foreach (Unit i in BattleGroup)
-            {
-                //Checks to see if the type is Player
-                if (i.Type == "Player")
-                {
-                    party.units.Add(i);
-                }
-            }
+            List<Party> data = new List<Party>();
+            string path = Environment.CurrentDirectory + @"\PartySave\";
+            _Save.SerializeGameData("PartySave", a, path);
+            MessageBox.Show("Successfully Saved.\n");
         }
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
-           
+            Party data;
+
+            string path = @"..\PartySave";
+
+            OpenFileDialog Dialog = new OpenFileDialog();
+
+            if(Dialog.InitialDirectory != path)
+            {
+                Dialog.InitialDirectory = path;
+            }
+ 
+
+            Dialog.FilterIndex = 2;
+
+            if(Dialog.ShowDialog() == DialogResult.OK)
+            {
+                string Selected = Dialog.FileName;
+
+                if(BattleGroup.Count >= 1)
+                {
+                    BattleGroup.RemoveRange(0, BattleGroup.Count);
+                }
+
+                foreach (Unit i in data.units)
+                {
+                    BattleGroup.Add(i);
+                }
+                List<Unit> savedparty = new List<Unit>();
+
+                savedparty = PlayerObjects();
+
+
+                data = _Save.DeserializeGameData<Party>(Selected);
+                //Party Member 1 Data
+                P1NBox.Text = data.units[0].Name;
+
+                p1name = data.units[0].Name;
+
+                P1hp.Text = data.units[0].HP.ToString();
+
+                P1dmg.Text = data.units[0].Dmg.ToString();
+
+                P1armor.Text = data.units[0].Dmg.ToString();
+
+                P1lvl.Text = data.units[0].Lvl.ToString();
+
+                P1Spd.Text = data.units[0].Spd.ToString();
+
+                //Party Member 2 Data
+                P2NBox.Text = data.units[1].Name;
+
+                p2name = data.units[1].Name;
+
+                P2hp.Text = data.units[1].HP.ToString();
+
+                P2dmg.Text = data.units[1].Dmg.ToString();
+
+                P2armor.Text = data.units[1].Dmg.ToString();
+
+                P2lvl.Text = data.units[1].Lvl.ToString();
+
+                P2Spd.Text = data.units[1].Spd.ToString();
+
+                //Party Member 3 Data
+
+                P3NBox.Text = data.units[2].Name;
+
+                p3name = data.units[2].Name;
+
+                P3hp.Text = data.units[2].HP.ToString();
+
+                P3dmg.Text = data.units[2].Dmg.ToString();
+
+                P3armor.Text = data.units[2].Dmg.ToString();
+
+                P3lvl.Text = data.units[2].Lvl.ToString();
+
+                P3Spd.Text = data.units[2].Spd.ToString();
+
+                CharIcon(data.units);
+            }
+
+
         }
         public void Begin()
         {
