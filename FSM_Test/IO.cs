@@ -25,7 +25,7 @@ namespace FSM_Test
                 }
             }
         }
-
+        //Deserializes data from path
         public T DeserializeGameData<T>(string s)
         {
             T t;
