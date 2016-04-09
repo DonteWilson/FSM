@@ -252,20 +252,20 @@ namespace FSM_Test
 
             if(refer.Control.FSM.cState.name != state)
             {
-                refer.Control.FSM.Insert("fight");
+                //refer.Control.FSM.Insert("fight");
             }
 
             if (refer.u.member[num].Type == "Player" && refer.u.member[num].Life == true)
             {
                 CombatT.Text += refer.u.member[num].Name + "'s turn\n";
                 //changes fsm state to player turn
-                refer.Control.FSM.Insert("SwitchPlayer");
+                //refer.Control.FSM.Insert("SwitchPlayer");
             }
             else if (refer.u.member[num].Type == "Enemy" && refer.u.member[num].Life == true)
             {
                 CombatT.Text += refer.u.member[num].Name + "'s turn\n";
                 //changes fsm state to enemy turn
-                refer.Control.FSM.Insert("SwitchEnemy");
+                //refer.Control.FSM.Insert("SwitchEnemy");
             }
             else
             {
@@ -282,7 +282,7 @@ namespace FSM_Test
             if (refer.dState != null)
             {
                 //if it does then it adds a state
-                refer.Control.FSM.Insert(refer.dState);
+                //refer.Control.FSM.Insert(refer.dState);
             }
             else
             {
@@ -290,11 +290,11 @@ namespace FSM_Test
                 if(uList[index].Type == "Enemy" && uList[index].Life == true)
                 {
                     //changes fsm to Enemy turn
-                    refer.Control.FSM.Insert("ETurn");
+                    //refer.Control.FSM.Insert("ETurn");
                 }
                 if(uList[index].Type == "Player" && uList[index].Life == true)
                 {   //changes fsm state to Player Turn
-                    refer.Control.FSM.Insert("PTurn");
+                    //refer.Control.FSM.Insert("PTurn");
                 }
             }
 
@@ -642,7 +642,7 @@ namespace FSM_Test
 
             CombatT.Text = "";
             //FSM to Locate Enemy State
-            refer.Control.FSM.Insert("locate");
+            //refer.Control.FSM.Insert("locate");
             //Sets current state text to current state
             CState.Text = refer.Control.FSM.cState.name.ToString();
 

@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 //Enum for game states
 public enum i_STATES
 {
+    //Inital State
     INIT,
+    //Begin Game state
     START,
+    //Locate Enemy State
     LOCATE,
+    //Fighting State
     FIGHT,
+    //Player Turn State
     PTURN,
+    //Enemy Turn State
     ETURN,
+    //Exit Game State
     EXIT
 }
 
@@ -45,7 +52,7 @@ public enum i_STATES
             get;
             private set;
         }
-        //where the transition is focused on going
+        //where the transition is focused on going to the intiial destination
         public State focus
         {
             get;
@@ -82,26 +89,26 @@ public enum i_STATES
         //Initializes the list
         _states = new List<State>();
         //Stores state in both
-        NewState();
+        AddState();
     }
     //Takes in a generic type to attack transitions
-    public bool Insert<V>(V value)
-    {
-        foreach (Transition t in Trans[cState.name])
-        {
-            if (t.input == value.ToString())
-            {
-                cState = t.focus;
-                //Activates the current state of the function
-                //returns true
-                return true;
-            }
-        }
-        //returns false
-        return false;
-    }
+    //public bool Insert<V>(V value)
+    //{
+    //    foreach (Transition t in Trans[cState.name])
+    //    {
+    //        if (t.input == value.ToString())
+    //        {
+    //            cState = t.focus;
+    //            //Activates the current state of the function
+    //            //returns true
+    //            return true;
+    //        }
+    //    }
+    //    //returns false
+    //    return false;
+    //}
     //Function for Adding a new state
-    public void NewState()
+    public void AddState()
     {
         if(typeof(T).IsEnum)
         {
@@ -119,10 +126,11 @@ public enum i_STATES
         }
         else
         {
+            //Tells the user that this is an invalid Enum ype.
             Console.WriteLine("Invalid " + typeof(T) + "is not of type Enum");
         }
     }
-    public bool NewTransition<V>(T from, T to, V input)
+    public bool AddTransition<V>(T from, T to, V input)
     {
         //typecast from
         Enum f = from as Enum;

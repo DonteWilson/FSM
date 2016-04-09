@@ -307,28 +307,28 @@ namespace FSM_Test
             Control.FSM.State(i_STATES.ETURN);
             Control.FSM.State(i_STATES.EXIT);
             //Switches from Init to Start
-            Control.FSM.NewTransition(i_STATES.INIT, i_STATES.START, "begin");
+            Control.FSM.AddTransition(i_STATES.INIT, i_STATES.START, "begin");
             //Switches from Start to Locate
-            Control.FSM.NewTransition(i_STATES.START, i_STATES.LOCATE, "locate");
+            Control.FSM.AddTransition(i_STATES.START, i_STATES.LOCATE, "locate");
             //Switches from Locate to PTURN
-            Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.PTURN, "PTurn ");
+            Control.FSM.AddTransition(i_STATES.LOCATE, i_STATES.PTURN, "PTurn ");
             //Switches from Locate to ETURN
-            Control.FSM.NewTransition(i_STATES.LOCATE, i_STATES.ETURN, "ETurn");
+            Control.FSM.AddTransition(i_STATES.LOCATE, i_STATES.ETURN, "ETurn");
             //Switches from PTURN to FIGHT
-            Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.FIGHT, "fight");
+            Control.FSM.AddTransition(i_STATES.PTURN, i_STATES.FIGHT, "fight");
             //Switches from ETURN to FIGHT
-            Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.FIGHT, "fight");
+            Control.FSM.AddTransition(i_STATES.ETURN, i_STATES.FIGHT, "fight");
             //Switches from FIGHT to PTURN
-            Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.PTURN, "SwitchPlayer");
+            Control.FSM.AddTransition(i_STATES.FIGHT, i_STATES.PTURN, "SwitchPlayer");
             //Switches from FIGHT to ETURN
-            Control.FSM.NewTransition(i_STATES.FIGHT, i_STATES.ETURN, "SwitchEnemy");
+            Control.FSM.AddTransition(i_STATES.FIGHT, i_STATES.ETURN, "SwitchEnemy");
             //Switches from PTURN to EXIT
-            Control.FSM.NewTransition(i_STATES.PTURN, i_STATES.EXIT, "Pquit");
+            Control.FSM.AddTransition(i_STATES.PTURN, i_STATES.EXIT, "Pquit");
             //Switches from ETURN to EXIT
-            Control.FSM.NewTransition(i_STATES.ETURN, i_STATES.EXIT, "Equit");
+            Control.FSM.AddTransition(i_STATES.ETURN, i_STATES.EXIT, "Equit");
 
             //Returns to start
-            Control.FSM.Insert("begin");
+           // Control.FSM.Insert("begin");
 
             //Displays current state
             textBox1.Text = Control.FSM.cState.ToString();
@@ -369,10 +369,10 @@ namespace FSM_Test
                     BattleGroup.RemoveRange(0, BattleGroup.Count);
                 }
 
-                foreach (Unit i in data.units)
-                {
-                    BattleGroup.Add(i);
-                }
+                //foreach (Unit i in data.units)
+                //{
+                //    BattleGroup.Add(i);
+                //}
                 List<Unit> savedparty = new List<Unit>();
 
                 savedparty = PlayerObjects();
