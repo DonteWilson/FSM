@@ -336,97 +336,20 @@ namespace FSM_Test
         //Saves current party.
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            Party a = new Party();
-
-            List<Party> data = new List<Party>();
+            //Saves Current Game Data
             string path = Environment.CurrentDirectory + @"\PartySave\";
-            _Save.SerializeGameData("PartySave", a, path);
+            IO.SerializeGameData<PartyData>("Party", PartySave, path);
             MessageBox.Show("Successfully Saved.\n");
         }
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            Party data;
+            //Attempt to load from serialzied data.
+            string path = Environment.CurrentDirectory + @"\PartySave\Party";
+            IO.DeserializeGameData<PartyData>(path);
+            PartyData party = IO.DeserializeGameData<PartyData>(path);
 
-            string path = @"..\PartySave";
-
-            OpenFileDialog Dialog = new OpenFileDialog();
-
-            if(Dialog.InitialDirectory != path)
-            {
-                Dialog.InitialDirectory = path;
-            }
- 
-
-            Dialog.FilterIndex = 2;
-
-            if(Dialog.ShowDialog() == DialogResult.OK)
-            {
-                string Selected = Dialog.FileName;
-
-                if(BattleGroup.Count >= 1)
-                {
-                    BattleGroup.RemoveRange(0, BattleGroup.Count);
-                }
-
-                //foreach (Unit i in data.units)
-                //{
-                //    BattleGroup.Add(i);
-                //}
-                List<Unit> savedparty = new List<Unit>();
-
-                savedparty = PlayerObjects();
-
-
-                data = _Save.DeserializeGameData<Party>(Selected);
-                //Party Member 1 Data
-                P1NBox.Text = data.units[0].Name;
-
-                p1name = data.units[0].Name;
-
-                P1hp.Text = data.units[0].HP.ToString();
-
-                P1dmg.Text = data.units[0].Dmg.ToString();
-
-                P1armor.Text = data.units[0].Dmg.ToString();
-
-                P1lvl.Text = data.units[0].Lvl.ToString();
-
-                P1Spd.Text = data.units[0].Spd.ToString();
-
-                //Party Member 2 Data
-                P2NBox.Text = data.units[1].Name;
-
-                p2name = data.units[1].Name;
-
-                P2hp.Text = data.units[1].HP.ToString();
-
-                P2dmg.Text = data.units[1].Dmg.ToString();
-
-                P2armor.Text = data.units[1].Dmg.ToString();
-
-                P2lvl.Text = data.units[1].Lvl.ToString();
-
-                P2Spd.Text = data.units[1].Spd.ToString();
-
-                //Party Member 3 Data
-
-                P3NBox.Text = data.units[2].Name;
-
-                p3name = data.units[2].Name;
-
-                P3hp.Text = data.units[2].HP.ToString();
-
-                P3dmg.Text = data.units[2].Dmg.ToString();
-
-                P3armor.Text = data.units[2].Dmg.ToString();
-
-                P3lvl.Text = data.units[2].Lvl.ToString();
-
-                P3Spd.Text = data.units[2].Spd.ToString();
-
-                CharIcon(data.units);
-            }
+            
 
 
         }

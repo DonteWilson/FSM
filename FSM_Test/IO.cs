@@ -12,7 +12,7 @@ namespace FSM_Test
     //Save Test
     class IO
     {
-        public void SerializeGameData<T>(string s, T t, string path)
+        public static void SerializeGameData<T>(string s, T t, string path)
         {
             using (FileStream fs = File.Create(path + s + ".xml"))
             {
@@ -23,13 +23,13 @@ namespace FSM_Test
             }
         }
         //Deserializes data from path
-        public T DeserializeGameData<T>(string s)
+        public static T DeserializeGameData<T>(string s)
         {
             XmlSerializer Deserial = new XmlSerializer(typeof(T));
 
             T t;
 
-            using (FileStream fs = File.OpenRead(s))
+            using (FileStream fs = File.OpenRead(s + ".xml"))
             {
                 
                 t = (T)Deserial.Deserialize(fs);
