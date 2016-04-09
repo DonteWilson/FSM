@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FSM_Test;
 
 [Serializable]
 public class Unit : IStats, IAbilities<Unit> 
@@ -14,7 +15,7 @@ public class Unit : IStats, IAbilities<Unit>
     //Armor int
     private int m_uArmor;
     //XP Int
-    private int m_uXP;
+    public double m_uXP;
     //Dmg Int
     private int m_uDmg;
     private string m_uType;
@@ -35,7 +36,7 @@ public class Unit : IStats, IAbilities<Unit>
 
     }
     //Unit class that stores Name, HP, Armor, DMG, Spd, XP, Type
-    public Unit(string name, int HP, int Armor,int dmg, int Spd, int XP, string type)
+    public Unit(string name, int HP, int Armor,int dmg, int Spd, double XP, string type)
     {
         m_uName = name;
         m_uHP = HP;
@@ -157,7 +158,7 @@ public class Unit : IStats, IAbilities<Unit>
         }
     }
     //Experience Property
-    public int XP
+    public double XP
     {
         get
         {
@@ -239,23 +240,31 @@ public class Unit : IStats, IAbilities<Unit>
         //return null if dead
         return null;
     }
-    //Leveling Algortihm
-    //Similar to borderlands
-    public void LvlUP()
+    private double Sqrt(double XP)
     {
-        //Leveling system similar to borderlands 
-        //Takes Current Lvl and times it by 100, so eacch time the player levels the amount of XP
-        //needed for next lvl is increased by 100
-        int XPCAP = this.Lvl * 100;
-        if(this.XP >= XPCAP)
+        return Convert.ToInt32(Math.Sqrt(XP));
+    }
+
+
+    //Leveling Algortihm
+    public void LvlUP()
+    {   //New Leveling System
+        int Plvl = this.Lvl;
+       
+        if(XP > 0)
         {
-            stuff += "\n" + this.Name + "Leveled Up!\n";
-            this.Lvl++;
-            this.XP = 0;
-            this.m_uHP += 15;
-            this.Armor += 5;
-            this.Spd += 2;
+          // Plvl = Sqrt(XP);
+        }
+
+        //print this when player levels up
+        stuff += "\n" + this.Name + "Leveled Up!\n";
+        //int to store max lvl
+        int MaxLvl = 25;
+        //checks to see if player is max lvl
+        if (this.Lvl >= MaxLvl)
+        {
+            //if player is maxed level, print this message
+            stuff += "\n" + this.Name + "is currently max lvl!";
         }
     }
- 
 }

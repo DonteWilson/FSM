@@ -23,7 +23,7 @@ public interface IStats
     //Dmg Property
     int Dmg { get; set; }
     //Experience Property
-    int XP { get; set; }
+    double XP { get; set; }
     //Health Property
     int HP { get; set; }
     string Type { get; set; }
