@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<PartyData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <P1name>Yato</P1name>
+  <P1HP>100</P1HP>
+  <P1Armor>100</P1Armor>
+  <P1Dmg>10</P1Dmg>
+  <P1Spd>5</P1Spd>
+  <P1Lvl>1</P1Lvl>
+  <P2name>Jittery</P2name>
+  <P2HP>100</P2HP>
+  <P2Armor>25</P2Armor>
+  <P2Dmg>15</P2Dmg>
+  <P2Spd>5</P2Spd>
+  <P2Lvl>1</P2Lvl>
+  <P3name>Ryyul</P3name>
+  <P3HP>100</P3HP>
+  <P3Armor>25</P3Armor>
+  <P3Dmg>9</P3Dmg>
+  <P3Spd>4</P3Spd>
+  <P3Lvl>1</P3Lvl>
+</PartyData>
