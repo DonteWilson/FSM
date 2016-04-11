@@ -66,6 +66,8 @@ namespace FSM_Test
         {
             SaveButton.Enabled = true;
 
+            NewGame.Enabled = true;
+
             List<Unit> NewGroup = PlayerObjects();
 
             List<Unit> players = new List<Unit>();
@@ -179,11 +181,6 @@ namespace FSM_Test
                 P3Dmg = dmg3;
                 P3Spd = Spd3;
                 P3Lvl = lvl3;
-
-
-
-
-
 
             }
             public string P1name;
@@ -379,21 +376,54 @@ namespace FSM_Test
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog LoadWindow = new OpenFileDialog();
 
-            LoadWindow.Multiselect = true;
-            string path = @"..\PartySave\Party";
 
-            if (LoadWindow.InitialDirectory != path)
-            {
-                LoadWindow.InitialDirectory = path;
-            }
             //Attempt to load from serialzied data.
-            
+            string path = @"..\Debug\PartySave\Party";
             IO.DeserializeGameData<PartyData>(path);
             PartyData party = IO.DeserializeGameData<PartyData>(path);
+            //Loads Name
+            P1NBox.Text = party.P1name;
+            //Loads HP
+            P1hp.Text = party.P1HP;
+            //Loads Dmg
+            P1dmg.Text = party.P1Dmg;
+            //Loads Armor
+            P1armor.Text = party.P1Armor;
+            //Loads Speed
+            P1Spd.Text = party.P1Spd;
+            //Loads Level
+            P1lvl.Text = party.P1Lvl;
 
-            
+            //Loads Player 2 name
+            P2NBox.Text = party.P2name;
+            //Loads Player 2 Hp
+            P2hp.Text = party.P2HP;
+            //Loads Player 2 Dmg
+            P2dmg.Text = party.P2Dmg;
+            //Loads Player 2 Armor
+            P2armor.Text = party.P2Armor;
+            //Loads Player 2 Speed
+            P2Spd.Text = party.P2Spd;
+            //Loads Player 2 Lvl
+            P2lvl.Text = party.P2Lvl;
+
+            //Loads Player 3 name
+            P3NBox.Text = party.P3name;
+            //Loads Player 3 Hp
+            P3hp.Text = party.P3HP;
+            //Loads Player 3 Dmg
+            P3dmg.Text = party.P3Dmg;
+            //Loads Player 3 Armor
+            P3armor.Text = party.P3Armor;
+            //Loads Player 3 Speed
+            P3Spd.Text = party.P3Spd;
+            //Loads Player 3 Level
+            P3lvl.Text = party.P3Lvl;
+
+
+
+
 
 
         }
@@ -584,58 +614,59 @@ namespace FSM_Test
         {
             NewGame.Enabled = false;
 
+            SaveButton.Enabled = false;
+
             checkBox1.Enabled = true;
 
             button1.Enabled = true;
-
-            pictureBox1.Image = Properties.Resources.Jittery;
+            pictureBox1.Image = null;
             //sets p1 name box
-            P1NBox.Text = "Jittery";
+            P1NBox.Text = "";
             //Set p1 name to ""
-            p1name = "Jittery";
+            p1name = "";
             //Set the P1HealthBox.Text to ""
-            P1hp.Text = "100";
+            P1hp.Text = "";
             //Set the P1StrengthBox.Text to ""
-            P1dmg.Text = "52";
+            P1dmg.Text = "";
             //Set armor.text to ""
-            P1armor.Text = "15";
+            P1armor.Text = "";
             //Set the P1SpeedBox.Text to ""
-            P1Spd.Text = "5";
+            P1Spd.Text = "";
             //Set the P1LevelBox.Text to ""
-            P1lvl.Text = "1";
+            P1lvl.Text = "";
 
 
-            pictureBox2.Image = Properties.Resources.Ryyul;
+            pictureBox2.Image = null;
             //Set the P2NameBox.Text to ""
-            P2NBox.Text = "Ryyul";
+            P2NBox.Text = "";
             //Set the Player2name to ""
-            p2name = "Ryyul";
+            p2name = "";
             //Set the P2HealthBox.Text to ""
-            P2hp.Text = "100";
+            P2hp.Text = "";
             //Set dmg to ""
-            P2dmg.Text = "15";
+            P2dmg.Text = "";
             //Set the P2DefenseBox.Text to ""
-            P2armor.Text = "10";
+            P2armor.Text = "";
             //Set the P2SpeedBox.Text to ""
-            P2Spd.Text = "4";
+            P2Spd.Text = "";
             //Set the P2LevelBox.Text to ""
-            P2lvl.Text = "2";
+            P2lvl.Text = "";
 
-            pictureBox3.Image = Properties.Resources.Meteos;
+            pictureBox3.Image = null;
             //Set the P3NameBox.Text to ""
-            P3NBox.Text = "Meteos";
+            P3NBox.Text = "";
             //Set the player3name to ""
-            p3name = "Meteos";
+            p3name = "";
             //Set the P3HealthBox.Text to ""
-            P3hp.Text = "100";
+            P3hp.Text = "";
             //Set the P3StrengthBox.Text to ""
-            P3dmg.Text = "50";
+            P3dmg.Text = "";
             //Set the P3DefenseBox.Text to ""
-            P3armor.Text = "15";
+            P3armor.Text = "";
             //Set the P2SpeedBox.Text to ""
-            P3Spd.Text = "5";
+            P3Spd.Text = "";
             //Set the P3LevelBox.Text to ""
-            P3lvl.Text = "1";
+            P3lvl.Text = "";
 
             
 
