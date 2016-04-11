@@ -156,11 +156,12 @@ namespace FSM_Test
         [Serializable]
         public class PartyData
         {
+            //Default Constructor
             public PartyData()
             {
                 
             }
-
+            //Used to store saved PartyData variables.
             public PartyData(string Name, string HP, string Armor, string dmg, string Spd,string lvl, string Name2, string HP2, string Armor2, string dmg2, string Spd2, string lvl2, string Name3, string HP3, string Armor3, string dmg3, string Spd3, string lvl3)
             {
                 P1name = Name;
@@ -183,23 +184,41 @@ namespace FSM_Test
                 P3Lvl = lvl3;
 
             }
+            //Stores Player1 Name
             public string P1name;
+            //Stores Player1 HP
             public string P1HP;
+            //Stores Player1 Armor
             public string P1Armor;
+            //Stores Player 1 Dmg
             public string P1Dmg;
+            //Stores Player 1 Speed
             public string P1Spd;
+            //Stores Player 1 Level
             public string P1Lvl;
+            //Stores Player 2 Name
             public string P2name;
+            //Stores Player 2 HP
             public string P2HP;
+            //Stores Player 2 Armor
             public string P2Armor;
+            //Stores Player 2 Damage
             public string P2Dmg;
+            //Stores Player 2 Speed
             public string P2Spd;
+            //Stores Player 2 Level
             public string P2Lvl;
+            //Stores Player 3 Name
             public string P3name;
+            //Stores Player 3 HP
             public string P3HP;
+            //Stores Player 3 Armor
             public string P3Armor;
+            //Stores Player 3 Damage
             public string P3Dmg;
+            //Stores Pllayer 3 Speed
             public string P3Spd;
+            //Store Player 3 Level
             public string P3Lvl;
 
 
@@ -443,8 +462,6 @@ namespace FSM_Test
             button3.Enabled = true;
             //Remoave all elements of the BattleReadyParty list
             BattleGroup.RemoveRange(0, BattleGroup.Count);
-            //Disable the load party button
-            //LoadButton.Enabled = false;
             //Disable the save button
             SaveButton.Enabled = false;
             //Disable the Generate Party Button

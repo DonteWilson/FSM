@@ -5,8 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//Contains a bool to check the actions of a Player/Enemy
 //Public interface for abilities 
+//Public interface for Controlling the game
+public interface IControl<T>
+{
+    List<Unit> Speed(T u);
+    //Checks to see if player is victorious.
+    bool Victorious(T p, T e);
+    //Displays player object stats in the game.
+    void Objectstats(T u);
+
+}
+//Contains a bool to check the actions of a Player/Enemy
 public interface IAbilities<T>
 {
     bool Combat(T u);
@@ -31,13 +41,4 @@ public interface IStats
     //Name Property
     string Name { get; set; }
 }
-//Public interface for Controlling the game
-public interface IControl<T>
-{
-    List<Unit> Speed(T u);
-    //Checks to see if player is victorious.
-    bool Victorious(T p, T e);
-   //Displays player object stats in the game.
-    void Objectstats(T u);
-   
-}
+
