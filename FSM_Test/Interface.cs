@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 //Contains a bool to check the actions of a Player/Enemy
 //Public interface for abilities 
 public interface IAbilities<T>

@@ -156,31 +156,56 @@ namespace FSM_Test
         {
             public PartyData()
             {
-               
+                
             }
-            public PartyData(string name, int HP, int Armor, int dmg, int Spd, int XP, string type)
+
+            public PartyData(string Name, string HP, string Armor, string dmg, string Spd,string lvl, string Name2, string HP2, string Armor2, string dmg2, string Spd2, string lvl2, string Name3, string HP3, string Armor3, string dmg3, string Spd3, string lvl3)
             {
-                SaveName = name;
-                SaveHP = HP;
-                SaveArmor = Armor;
-                SaveDmg = dmg;
-                SaveSpd = Spd;
-                SaveXP = XP;
-                SaveType = type;
+                P1name = Name;
+                P1HP = HP;
+                P1Armor = Armor;
+                P1Dmg = dmg;
+                P1Spd = Spd;
+                P1Lvl = lvl;
+                P2name = Name2;
+                P2HP = HP2;
+                P2Armor = Armor2;
+                P2Dmg = dmg2;
+                P2Spd = Spd2;
+                P2Lvl = lvl2;
+                P3name = Name3;
+                P3HP = HP3;
+                P3Armor = Armor3;
+                P3Dmg = dmg3;
+                P3Spd = Spd3;
+                P3Lvl = lvl3;
+
+
+
+
+
+
             }
-            //saves name
-            public string SaveName;
-            public int SaveHP;
-            //saves xP
-            public int SaveXP;
-            //saves Damage
-            public int SaveDmg;
-            //saves Speed
-            public int SaveSpd;
-            //saves Armor
-            public int SaveArmor;
-            //saves type
-            public string SaveType;
+            public string P1name;
+            public string P1HP;
+            public string P1Armor;
+            public string P1Dmg;
+            public string P1Spd;
+            public string P1Lvl;
+            public string P2name;
+            public string P2HP;
+            public string P2Armor;
+            public string P2Dmg;
+            public string P2Spd;
+            public string P2Lvl;
+            public string P3name;
+            public string P3HP;
+            public string P3Armor;
+            public string P3Dmg;
+            public string P3Spd;
+            public string P3Lvl;
+
+
         }
 
         //Looks through players and generates a random party of 3.
@@ -216,7 +241,7 @@ namespace FSM_Test
                     P1armor.Text = p[p1].Armor.ToString();
                     P1Spd.Text = p[p1].Spd.ToString();
                     P1lvl.Text = p[p1].Lvl.ToString();
-                    BattleGroup.Add(p[p1]);
+                    BattleGroup.Add(p[p1]);                   
                 }
 
                 while (p2 == p1)
@@ -239,6 +264,8 @@ namespace FSM_Test
                     P2Spd.Text = p[p1].Spd.ToString();
                     P2lvl.Text = p[p2].Lvl.ToString();
                     BattleGroup.Add(p[p2]);
+
+                    
                 }
 
                 while (p3 == p1)
@@ -262,7 +289,13 @@ namespace FSM_Test
                     P3lvl.Text = p[p3].Lvl.ToString();
                     BattleGroup.Add(p[p3]);
 
+                    
+
                 }
+                PartyData save = new PartyData(P1NBox.Text, P1hp.Text, P1dmg.Text, P1armor.Text, P1Spd.Text, P1lvl.Text, P2NBox.Text, P2hp.Text, P2dmg.Text, P2armor.Text,P2Spd.Text,P2lvl.Text, P3NBox.Text,P3hp.Text, P3dmg.Text, P3armor.Text,P3Spd.Text,P3lvl.Text);
+                
+                PartySave = save;
+
                 CharIcon(BattleGroup);
 
                 Random a = new Random();
@@ -337,6 +370,7 @@ namespace FSM_Test
         //Saves current party.
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            
             //Saves Current Game Data
             string path = Environment.CurrentDirectory + @"\PartySave\";
             IO.SerializeGameData<PartyData>("Party", PartySave, path);
@@ -345,8 +379,17 @@ namespace FSM_Test
         //Load save from a file.
         private void LoadButton_Click(object sender, EventArgs e)
         {
+            OpenFileDialog LoadWindow = new OpenFileDialog();
+
+            LoadWindow.Multiselect = true;
+            string path = @"..\PartySave\Party";
+
+            if (LoadWindow.InitialDirectory != path)
+            {
+                LoadWindow.InitialDirectory = path;
+            }
             //Attempt to load from serialzied data.
-            string path = Environment.CurrentDirectory + @"\PartySave\Party";
+            
             IO.DeserializeGameData<PartyData>(path);
             PartyData party = IO.DeserializeGameData<PartyData>(path);
 
@@ -544,6 +587,58 @@ namespace FSM_Test
             checkBox1.Enabled = true;
 
             button1.Enabled = true;
+
+            pictureBox1.Image = Properties.Resources.Jittery;
+            //sets p1 name box
+            P1NBox.Text = "Jittery";
+            //Set p1 name to ""
+            p1name = "Jittery";
+            //Set the P1HealthBox.Text to ""
+            P1hp.Text = "100";
+            //Set the P1StrengthBox.Text to ""
+            P1dmg.Text = "52";
+            //Set armor.text to ""
+            P1armor.Text = "15";
+            //Set the P1SpeedBox.Text to ""
+            P1Spd.Text = "5";
+            //Set the P1LevelBox.Text to ""
+            P1lvl.Text = "1";
+
+
+            pictureBox2.Image = Properties.Resources.Ryyul;
+            //Set the P2NameBox.Text to ""
+            P2NBox.Text = "Ryyul";
+            //Set the Player2name to ""
+            p2name = "Ryyul";
+            //Set the P2HealthBox.Text to ""
+            P2hp.Text = "100";
+            //Set dmg to ""
+            P2dmg.Text = "15";
+            //Set the P2DefenseBox.Text to ""
+            P2armor.Text = "10";
+            //Set the P2SpeedBox.Text to ""
+            P2Spd.Text = "4";
+            //Set the P2LevelBox.Text to ""
+            P2lvl.Text = "2";
+
+            pictureBox3.Image = Properties.Resources.Meteos;
+            //Set the P3NameBox.Text to ""
+            P3NBox.Text = "Meteos";
+            //Set the player3name to ""
+            p3name = "Meteos";
+            //Set the P3HealthBox.Text to ""
+            P3hp.Text = "100";
+            //Set the P3StrengthBox.Text to ""
+            P3dmg.Text = "50";
+            //Set the P3DefenseBox.Text to ""
+            P3armor.Text = "15";
+            //Set the P2SpeedBox.Text to ""
+            P3Spd.Text = "5";
+            //Set the P3LevelBox.Text to ""
+            P3lvl.Text = "1";
+
+            
+
 
         }
     }

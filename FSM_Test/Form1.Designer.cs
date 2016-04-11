@@ -74,6 +74,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.NewGame = new System.Windows.Forms.Button();
+            this.Data1 = new System.Windows.Forms.TextBox();
+            this.Data2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -494,12 +496,32 @@
             this.NewGame.UseVisualStyleBackColor = true;
             this.NewGame.Click += new System.EventHandler(this.NewGame_Click);
             // 
+            // Data1
+            // 
+            this.Data1.Enabled = false;
+            this.Data1.Location = new System.Drawing.Point(698, 58);
+            this.Data1.MaximumSize = new System.Drawing.Size(100, 20);
+            this.Data1.Name = "Data1";
+            this.Data1.Size = new System.Drawing.Size(100, 20);
+            this.Data1.TabIndex = 49;
+            // 
+            // Data2
+            // 
+            this.Data2.Enabled = false;
+            this.Data2.Location = new System.Drawing.Point(698, 88);
+            this.Data2.MaximumSize = new System.Drawing.Size(100, 20);
+            this.Data2.Name = "Data2";
+            this.Data2.Size = new System.Drawing.Size(100, 20);
+            this.Data2.TabIndex = 50;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(999, 512);
+            this.Controls.Add(this.Data2);
+            this.Controls.Add(this.Data1);
             this.Controls.Add(this.NewGame);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -603,5 +625,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button NewGame;
+        private System.Windows.Forms.TextBox Data1;
+        private System.Windows.Forms.TextBox Data2;
     }
 }
