@@ -398,7 +398,7 @@ namespace FSM_Test
 
 
             //Attempt to load from serialzied data.
-            string path = @"..\Debug\PartySave\Party";
+            string path = @"..\PartySave\Party";
             IO.DeserializeGameData<PartyData>(path);
             PartyData party = IO.DeserializeGameData<PartyData>(path);
             //Loads Name
