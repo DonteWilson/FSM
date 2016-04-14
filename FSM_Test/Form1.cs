@@ -388,6 +388,7 @@ namespace FSM_Test
         {
             
             //Saves Current Game Data
+            //I have path set to current directory but it doesnt work as I want it to.
             string path = Environment.CurrentDirectory + @"\PartySave\";
             IO.SerializeGameData<PartyData>("Party", PartySave, path);
             MessageBox.Show("Successfully Saved.\n");
