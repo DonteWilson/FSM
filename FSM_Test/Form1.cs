@@ -486,45 +486,45 @@ namespace FSM_Test
             P1NBox.Text = "";
             //Set p1 name to ""
             p1name = "";
-            //Set the P1HealthBox.Text to ""
+            //Set the p1hp.Text to ""
             P1hp.Text = "";
-            //Set the P1StrengthBox.Text to ""
+            //Set the dmg.Text to ""
             P1dmg.Text = "";
             //Set armor.text to ""
             P1armor.Text = "";
-            //Set the P1SpeedBox.Text to ""
+            //Set the P1Spd.Text to ""
             P1Spd.Text = "";
-            //Set the P1LevelBox.Text to ""
+            //Set the P1lvl.Text to ""
             P1lvl.Text = "";
 
-            //Set the P2NameBox.Text to ""
+            //Set the P2NBox.Text to ""
             P2NBox.Text = "";
-            //Set the Player2name to ""
+            //Set the P2name to ""
             p2name = "";
-            //Set the P2HealthBox.Text to ""
+            //Set the P2hp.Text to ""
             P2hp.Text = "";
-            //Set the P2StrengthBox.Text to ""
+            //Set the P2dmg.Text to ""
             P2dmg.Text = "";
-            //Set the P2DefenseBox.Text to ""
+            //Sets Armor.text to ""
             P2armor.Text = "";
-            //Set the P2SpeedBox.Text to ""
+            //Set the P2Spd.Text to ""
             P2Spd.Text = "";
-            //Set the P2LevelBox.Text to ""
+            //Set the P2Lvl.Text to ""
             P2lvl.Text = "";
 
-            //Set the P3NameBox.Text to ""
+            //Set the P3NBox.Text to ""
             P3NBox.Text = "";
-            //Set the player3name to ""
+            //Set the p3name to ""
             p3name = "";
-            //Set the P3HealthBox.Text to ""
+            //Set the P3Hp.Text to ""
             P3hp.Text = "";
-            //Set the P3StrengthBox.Text to ""
+            //Set the P3dmg.Text to ""
             P3dmg.Text = "";
-            //Set the P3DefenseBox.Text to ""
+            //Set the P3Defense.Text to ""
             P3armor.Text = "";
-            //Set the P2SpeedBox.Text to ""
+            //Set the P2Spd.Text to ""
             P3Spd.Text = "";
-            //Set the P3LevelBox.Text to ""
+            //Set the P3lvl.Text to ""
             P3lvl.Text = "";
         }
        //Gives each player unity a certain icon to display difference.
