@@ -148,7 +148,7 @@ namespace FSM_Test
 
                 if (index == count)
                 {
-                    index = 0;
+                    index = 1;
                 }
                 else
                 {
@@ -196,7 +196,7 @@ namespace FSM_Test
 
                 if (index == count)
                 {
-                    index = 0;
+                    index = 2;
                 }
                 else
                 {
